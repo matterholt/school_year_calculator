@@ -22,8 +22,6 @@
 
 </script>
 
-<main>
-
     <ul>
     {#each scheduledDays as task, index}
       <li>
@@ -41,7 +39,6 @@
     <button  on:click={addTask}>Add</button>
   </div>
   </ul>
-</main>
 
 <style>
   /* Add your custom styles here */
