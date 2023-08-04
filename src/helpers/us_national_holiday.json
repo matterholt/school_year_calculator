@@ -1,0 +1,44 @@
+{
+  "holidays": [
+    {
+      "name": "New Year's Day",
+      "date": "January 1"
+    },
+    {
+      "name": "Martin Luther King Jr. Day",
+      "date": "Third Monday in January"
+    },
+    {
+      "name": "Presidents' Day",
+      "date": "Third Monday in February"
+    },
+    {
+      "name": "Memorial Day",
+      "date": "Last Monday in May"
+    },
+    {
+      "name": "Independence Day",
+      "date": "July 4"
+    },
+    {
+      "name": "Labor Day",
+      "date": "First Monday in September"
+    },
+    {
+      "name": "Columbus Day",
+      "date": "Second Monday in October"
+    },
+    {
+      "name": "Veterans Day",
+      "date": "November 11"
+    },
+    {
+      "name": "Thanksgiving Day",
+      "date": "Fourth Thursday in November"
+    },
+    {
+      "name": "Christmas Day",
+      "date": "December 25"
+    }
+  ]
+}
