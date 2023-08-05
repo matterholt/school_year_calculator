@@ -47,6 +47,7 @@
     </div>
 
     <CourseWork
+        pupilId={pupil.student_id}
         {studentCourseWork}
         {addToPupilsClases}
         pupilStatus={pupil.subjectStatus}

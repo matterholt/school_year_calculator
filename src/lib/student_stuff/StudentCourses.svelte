@@ -8,32 +8,32 @@
     ]
     export let classesAdded = [
         {
-            id: 1,
             student_id: 11,
+            subject_id: 110,
             subject_matter: 'math',
             number_of_chapters: 204,
             current_chapter: 0,
             status: 'saved',
         },
         {
-            id: 2,
             student_id: 11,
+            subject_id: 111,
             subject_matter: 'reading',
             number_of_chapters: 150,
             current_chapter: 0,
             status: 'saved',
         },
         {
-            id: 3,
             student_id: 12,
+            subject_id: 120,
             subject_matter: 'math',
             number_of_chapters: 300,
             current_chapter: 0,
             status: 'saved',
         },
         {
-            id: 4,
             student_id: 12,
+            subject_id: 121,
             subject_matter: 'writing',
             number_of_chapters: 200,
             current_chapter: 0,
@@ -52,12 +52,10 @@
         return classesAdded.filter((x) => x.student_id === id)
     }
     function addToPupilsClases(coursework) {
-        console.log(coursework)
         classesAdded = [...classesAdded, coursework]
     }
 
     function updateSubjectStatus(id, subjectStatus) {
-        console.log(id, subjectStatus)
         students = students.map((student) => {
             if (student.student_id === id) {
                 return { ...student, subjectStatus }

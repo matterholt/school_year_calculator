@@ -1,6 +1,9 @@
 <script>
+    import { v4 as uuidv4 } from 'uuid'
+
     export let studentCourseWork = []
     export let pupilStatus
+    export let pupilId
     export let addToPupilsClases
 
     // supply a function that can add the new cousrse work object to masters
@@ -15,11 +18,22 @@
 
         studentCourseWork = [
             ...studentCourseWork,
-            { subject_matter: subjectMatter, number_of_chapters: totalLessons },
+            {
+                subject_matter: subjectMatter,
+                number_of_chapters: totalLessons,
+                subject_id: uuidv4(),
+                courseStatus: 'edit',
+                student_id: pupilId,
+                current_chapter: 0,
+            },
         ]
         addToPupilsClases({
             subject_matter: subjectMatter,
             number_of_chapters: totalLessons,
+            subject_id: uuidv4(),
+            courseStatus: 'edit',
+            student_id: pupilId,
+            current_chapter: 0,
         })
         subjectMatter = ''
         totalLessons = ''
