@@ -4,6 +4,8 @@
     export let pupil = {}
     export let studentCourseWork = []
     export let updateSubjectStatus
+    export let addToPupilsClases
+    export let deleteById
 
     $: pupilStatus = 'edit'
 
@@ -20,8 +22,9 @@
 
         {#if pupil.subjectStatus == 'edit'}
             <div>
-                <button class="remove_X" on:click={() => deleteTask(index)}
-                    >Delete</button
+                <button
+                    class="remove_X"
+                    on:click={() => deleteById(pupil.student_id)}>Delete</button
                 >
                 <button
                     class="remove_X"
@@ -43,7 +46,11 @@
         {/if}
     </div>
 
-    <CourseWork {studentCourseWork} pupilStatus={pupil.subjectStatus} />
+    <CourseWork
+        {studentCourseWork}
+        {addToPupilsClases}
+        pupilStatus={pupil.subjectStatus}
+    />
 </li>
 
 <style>

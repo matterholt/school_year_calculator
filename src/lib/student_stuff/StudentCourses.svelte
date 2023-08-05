@@ -6,9 +6,7 @@
         { name: 'sarah', student_id: 11, subjectStatus: 'save' },
         { name: 'sam', student_id: 12, subjectStatus: 'save' },
     ]
-
-    // save to storage
-    let classesAdded = [
+    export let classesAdded = [
         {
             id: 1,
             student_id: 11,
@@ -42,12 +40,20 @@
             status: 'edit',
         },
     ]
+    // save above to storage
+
+    $: console.log(classesAdded)
+
     let addAStudentStatus = ''
 
     let studentName = `Student ${students.length + 1}`
 
     function pupilsClasses(id) {
         return classesAdded.filter((x) => x.student_id === id)
+    }
+    function addToPupilsClases(coursework) {
+        console.log(coursework)
+        classesAdded = [...classesAdded, coursework]
     }
 
     function updateSubjectStatus(id, subjectStatus) {
@@ -64,7 +70,11 @@
         if (studentName.trim() !== '') {
             students = [
                 ...students,
-                { name: studentName, student_id: uuidv4() },
+                {
+                    name: studentName,
+                    student_id: uuidv4(),
+                    subjectStatus: 'edit',
+                },
             ]
             studentName = `Student ${students.length + 1}`
         }
@@ -81,7 +91,9 @@
     {#each students as pupil, index}
         <StudentSection
             {pupil}
+            {deleteById}
             {updateSubjectStatus}
+            {addToPupilsClases}
             studentCourseWork={pupilsClasses(pupil.student_id)}
         />
     {/each}

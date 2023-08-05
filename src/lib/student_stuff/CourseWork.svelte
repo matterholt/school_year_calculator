@@ -1,23 +1,26 @@
 <script>
     export let studentCourseWork = []
     export let pupilStatus
+    export let addToPupilsClases
 
     // supply a function that can add the new cousrse work object to masters
 
     let subjectMatter = ''
     let totalLessons = ''
 
-    let notifiy = ''
-
     function addToStudentCourses() {
-        notifiy = ''
         if (!subjectMatter || !totalLessons) {
             return
         }
+
         studentCourseWork = [
             ...studentCourseWork,
             { subject_matter: subjectMatter, number_of_chapters: totalLessons },
         ]
+        addToPupilsClases({
+            subject_matter: subjectMatter,
+            number_of_chapters: totalLessons,
+        })
         subjectMatter = ''
         totalLessons = ''
     }
@@ -65,6 +68,7 @@
     .student_classlist {
         display: flex;
         flex-direction: column;
+        width: 500px;
     }
     .student_courses {
         display: flex;
