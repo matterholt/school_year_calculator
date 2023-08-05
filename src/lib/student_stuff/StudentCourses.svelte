@@ -1,87 +1,121 @@
-
 <script>
-import StudentSection from "./StudentSection.svelte"
+    import StudentSection from './StudentSection.svelte'
+    import { v4 as uuidv4 } from 'uuid'
+    // save to storage
+    export let students = [
+        { name: 'sarah', student_id: 11, subjectStatus: 'save' },
+        { name: 'sam', student_id: 12, subjectStatus: 'save' },
+    ]
 
-// save to storage
-  export let students=[
-    { name: "sarah", student_id:  11 },
-    { name: "sam", student_id:  12 }
-  ] ;
+    // save to storage
+    let classesAdded = [
+        {
+            id: 1,
+            student_id: 11,
+            subject_matter: 'math',
+            number_of_chapters: 204,
+            current_chapter: 0,
+            status: 'saved',
+        },
+        {
+            id: 2,
+            student_id: 11,
+            subject_matter: 'reading',
+            number_of_chapters: 150,
+            current_chapter: 0,
+            status: 'saved',
+        },
+        {
+            id: 3,
+            student_id: 12,
+            subject_matter: 'math',
+            number_of_chapters: 300,
+            current_chapter: 0,
+            status: 'saved',
+        },
+        {
+            id: 4,
+            student_id: 12,
+            subject_matter: 'writing',
+            number_of_chapters: 200,
+            current_chapter: 0,
+            status: 'edit',
+        },
+    ]
+    let addAStudentStatus = ''
 
-// save to storage
-  let classesAdded =[
-    {id: 1, student_id:  11,subject_matter:"math", number_of_chapters: 204, current_chapter: 0},
-    {id: 2, student_id:  11,subject_matter:"reading", number_of_chapters: 150,current_chapter: 0},
-    {id: 3, student_id:  12,subject_matter:"math", number_of_chapters: 300,current_chapter: 0},
-    {id: 4, student_id:  12,subject_matter:"writing", number_of_chapters: 200,current_chapter: 0},
-  ]
-  let addAStudentStatus = ""
+    let studentName = `Student ${students.length + 1}`
 
-  let studentName = `Student ${students.length + 1}`;
-  
-  function pupilsClasses (id){
-    return classesAdded.filter(x => x.student_id ===  id)
-  }
-
-
-
-
-// !! don't use length for ID, if need to remove something then will mess up the order, and will have an id of the same value
-  function addTask() {
-    if (studentName.trim() !== '') {
-      students = [...students, { name: studentName, student_id:  1 }];
-     studentName = `Student ${students.length + 1}`
+    function pupilsClasses(id) {
+        return classesAdded.filter((x) => x.student_id === id)
     }
-  }
 
-  function udpateStatus (action){
+    function updateSubjectStatus(id, subjectStatus) {
+        console.log(id, subjectStatus)
+        students = students.map((student) => {
+            if (student.student_id === id) {
+                return { ...student, subjectStatus }
+            }
+            return student
+        })
+    }
 
-  }
+    function addTask() {
+        if (studentName.trim() !== '') {
+            students = [
+                ...students,
+                { name: studentName, student_id: uuidv4() },
+            ]
+            studentName = `Student ${students.length + 1}`
+        }
+    }
 
-
-
-
+    function deleteById(id) {
+        students = students.filter((student) => student.student_id != id)
+    }
 </script>
-<h2>Student Stuff </h2>
 
-    <ul>
+<h2>Student Stuff</h2>
+
+<ul>
     {#each students as pupil, index}
-    <StudentSection {pupil} studentCourseWork={pupilsClasses(pupil.student_id)}/>
-
+        <StudentSection
+            {pupil}
+            {updateSubjectStatus}
+            studentCourseWork={pupilsClasses(pupil.student_id)}
+        />
     {/each}
 
-      <div>
-      {#if addAStudentStatus === "edit"}
-    <input  type="text" bind:value={studentName} placeholder={studentName}>
-    <button  on:click={addTask}>Add</button>
-    <button  on:click={()=> addAStudentStatus ="done"}>DONE</button>
-    {:else}
-    <button  on:click={()=> addAStudentStatus ="edit"}>edit</button>
-
-    {/if}
-
-
-  </div>
-  </ul>
+    <div>
+        {#if addAStudentStatus === 'edit'}
+            <input
+                type="text"
+                bind:value={studentName}
+                placeholder={studentName}
+            />
+            <button on:click={addTask}>Add</button>
+            <button on:click={() => (addAStudentStatus = 'done')}>DONE</button>
+        {:else}
+            <button on:click={() => (addAStudentStatus = 'edit')}>edit</button>
+        {/if}
+    </div>
+</ul>
 
 <style>
-  /* Add your custom styles here */
+    /* Add your custom styles here */
 
-  input[type="text"] {
-    flex: 1;
-    padding: 5px;
-  }
+    input[type='text'] {
+        flex: 1;
+        padding: 5px;
+    }
 
-  button {
-    padding: 5px 10px;
-    margin-left: 10px;
-  }
+    button {
+        padding: 5px 10px;
+        margin-left: 10px;
+    }
 
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-
-
+    ul {
+        list-style: none;
+        padding: 0;
+    }
 </style>
