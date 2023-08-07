@@ -83,8 +83,6 @@
     }
 </script>
 
-<h2>Student Stuff</h2>
-
 <ul>
     {#each students as pupil, index}
         <StudentSection
@@ -127,5 +125,6 @@
     ul {
         list-style: none;
         padding: 0;
+        margin: 0px 10px;
     }
 </style>

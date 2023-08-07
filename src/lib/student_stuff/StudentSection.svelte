@@ -75,13 +75,14 @@
         text-transform: uppercase;
     }
     .remove_X {
-        color: red;
-        border: solid 2px red;
+        color: rgb(0, 132, 255);
+        border: solid 2px rgb(0, 132, 255);
     }
     .student_header {
         display: flex;
         justify-content: space-between;
-        background: red;
+        background: rgb(0, 132, 255);
+        border-radius: 10px;
         width: 100%;
     }
 </style>

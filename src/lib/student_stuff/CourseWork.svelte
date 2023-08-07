@@ -42,17 +42,23 @@
 
 <div class="student_classlist">
     {#if studentCourseWork.length !== 0}
+        <div class="student_course_summary">
+            <p class="course_item-bold">subject</p>
+            <p class="course_item-bold">Total Lessons</p>
+        </div>
+
         {#each studentCourseWork as studentclass, index}
             <div class="student_courses">
+                <div class="student_course_summary">
+                    <p>{studentclass.subject_matter}</p>
+                    <p>{studentclass.number_of_chapters}</p>
+                </div>
                 {#if pupilStatus === 'edit'}
                     <button
                         class="student_activateEdit"
                         on:click={() => console.log('edit mode')}>:::</button
                     >
                 {/if}
-
-                <p>subject: {studentclass.subject_matter}</p>
-                <p>Total Lessons:{studentclass.number_of_chapters}</p>
             </div>
         {/each}
     {:else}
@@ -96,5 +102,16 @@
         font-size: 10px;
         font-weight: 900;
         letter-spacing: 0.1px;
+    }
+    .student_course_summary {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: start;
+    }
+    .course_item-bold {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 15px;
     }
 </style>
