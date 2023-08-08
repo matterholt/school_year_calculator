@@ -37,22 +37,6 @@
 
 <form on:submit={handleSubmit}>
     <section>
-        <label for="startDate">Start Date:</label>
-        <input type="date" id="startDate" bind:value={startDate} />
-
-        <label for="sessionsPerWeek">Number of Sessions per Week:</label>
-        <input
-            type="number"
-            id="sessionsPerWeek"
-            bind:value={sessionsPerWeek}
-            min="1"
-        />
-
-        <label for="endDate">End Date:</label>
-        <input type="date" id="endDate" bind:value={endDate} />
-    </section>
-
-    <section>
         <NationalHoliday
             {holidays}
             bind:selectedDays={selectedNationalHoliday}
@@ -79,6 +63,7 @@
         flex-direction: column;
         max-width: 400px;
         margin: 0 auto;
+        grid-row: 2;
     }
 
     label {

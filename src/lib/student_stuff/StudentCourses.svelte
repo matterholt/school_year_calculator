@@ -126,5 +126,6 @@
         list-style: none;
         padding: 0;
         margin: 0px 10px;
+        grid-row: 2;
     }
 </style>
