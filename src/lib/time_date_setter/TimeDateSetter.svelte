@@ -1,38 +1,46 @@
 <script>
     import moment from 'moment'
+    export let daysScheduledOff = 30
+
     let startDate = moment('2023-09-05').format('YYYY-MM-DD')
 
     let daysPerWeek = 4
     let longestLesson = 120
 
     let typicalSchoolWeeks = 36
-    let typicalSchoolDays = typicalSchoolWeeks * 5
+    $: typicalSchoolDays = typicalSchoolWeeks * 5
 
-    let weeksNeedForCourse = longestLesson / daysPerWeek
-    let daysNeedForCourse = longestLesson
+    $: weeksNeedForCourse = longestLesson / daysPerWeek
+    $: daysNeedForCourse = longestLesson
 
-    let daysScheduledOff = 30
-    let weekScheduledOff = daysScheduledOff / 5
+    $: weekScheduledOff = daysScheduledOff / 5
 
-    let estimatedWeeks = weeksNeedForCourse + weekScheduledOff
-    let tradEstimatedWeek = weekScheduledOff + 36
+    $: estimatedWeeks = weeksNeedForCourse + weekScheduledOff
+    $: tradEstimatedWeek = weekScheduledOff + 36
 
-    let courseBaseEndDate = moment(startDate)
+    $: courseBaseEndDate = moment(startDate)
         .add(estimatedWeeks, 'weeks')
         .format('MM-DD-YYYY')
 
-    let tradEndDate = moment(startDate)
+    $: tradEndDate = moment(startDate)
         .add(tradEstimatedWeek, 'weeks')
         .format('MM-DD-YYYY')
 
-    let diffOfDays = moment(tradEndDate).diff(courseBaseEndDate, 'days')
+    $: diffOfDays = moment(tradEndDate).diff(courseBaseEndDate, 'days')
 </script>
 
 <section class="schedule_column">
     <h3>estimated school year</h3>
     <div class="schedule_row-date">
-        <p>Start : {startDate}</p>
-        <p>day per week : {daysPerWeek}</p>
+        <p>Start : <input type="date" bind:value={startDate} /></p>
+        <p>
+            day per week : <input
+                type="number"
+                bind:value={daysPerWeek}
+                min="1"
+                max="7"
+            />
+        </p>
         <p>Days Off : {daysScheduledOff}</p>
     </div>
     <div class="schedule_row">
@@ -52,11 +60,15 @@
     </div>
     <div class="schedule_row">
         <p>Difference</p>
-        <p>
+        <p
+            style="color:{typicalSchoolWeeks - weeksNeedForCourse <= 0
+                ? 'red'
+                : ''}"
+        >
             {typicalSchoolWeeks - weeksNeedForCourse} / {typicalSchoolDays -
                 daysNeedForCourse}
         </p>
-        <p>{diffOfDays}</p>
+        <p style="color:{diffOfDays <= 0 ? 'red' : ''}">{diffOfDays}</p>
     </div>
 </section>
 
@@ -75,5 +87,8 @@
         display: flex;
         justify-content: space-evenly;
         border-bottom: solid 2px rgb(92, 92, 92);
+    }
+    .lessDay {
+        color: red;
     }
 </style>

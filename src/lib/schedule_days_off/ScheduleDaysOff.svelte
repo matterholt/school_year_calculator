@@ -4,6 +4,7 @@
     import { holidays } from '../../helpers/us_national_holiday.json'
     import NationalHoliday from './NationalHoliday.svelte'
     import DaysOff from './DaysOff.svelte'
+    export let daysScheduledOff = 0
 
     let startDate = ''
     let sessionsPerWeek = 5

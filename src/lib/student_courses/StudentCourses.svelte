@@ -1,45 +1,13 @@
 <script>
     import StudentSection from './StudentSection.svelte'
     import { v4 as uuidv4 } from 'uuid'
+    import { students_sample } from '../../helpers/sample_data/student_sample.json'
+    import { coursework_sample } from '../../helpers/sample_data/courseWork_sample.json'
+
     // save to storage
-    export let students = [
-        { name: 'sarah', student_id: 11, subjectStatus: 'save' },
-        { name: 'sam', student_id: 12, subjectStatus: 'save' },
-    ]
-    export let classesAdded = [
-        {
-            student_id: 11,
-            subject_id: 110,
-            subject_matter: 'math',
-            number_of_chapters: 204,
-            current_chapter: 0,
-            status: 'saved',
-        },
-        {
-            student_id: 11,
-            subject_id: 111,
-            subject_matter: 'reading',
-            number_of_chapters: 150,
-            current_chapter: 0,
-            status: 'saved',
-        },
-        {
-            student_id: 12,
-            subject_id: 120,
-            subject_matter: 'math',
-            number_of_chapters: 300,
-            current_chapter: 0,
-            status: 'saved',
-        },
-        {
-            student_id: 12,
-            subject_id: 121,
-            subject_matter: 'writing',
-            number_of_chapters: 200,
-            current_chapter: 0,
-            status: 'edit',
-        },
-    ]
+    export let students = [...students_sample]
+
+    export let classesAdded = [...coursework_sample]
     // save above to storage
 
     $: console.log(classesAdded)

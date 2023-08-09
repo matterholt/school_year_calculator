@@ -1,14 +1,15 @@
 <script>
-    import ScheduleDaysOff from './lib/formSections/ScheduleDaysOff.svelte'
-    import StudentCourses from './lib/student_stuff/StudentCourses.svelte'
+    import ScheduleDaysOff from './lib/schedule_days_off/ScheduleDaysOff.svelte'
+    import StudentCourses from './lib/student_courses/StudentCourses.svelte'
     import TimeDateSetter from './lib/time_date_setter/TimeDateSetter.svelte'
-    import DateAdjustment from './lib/date_adjustments/DateAdjustment.svelte'
+
+    let daysScheduledOff = 30
 </script>
 
 <main>
-    <TimeDateSetter />
+    <TimeDateSetter {daysScheduledOff} />
     <StudentCourses />
-    <ScheduleDaysOff />
+    <ScheduleDaysOff bind:daysScheduledOff />
 </main>
 
 <style>

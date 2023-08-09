@@ -1,0 +1,6 @@
+{
+    "students_sample": [
+        { "name": "sarah", "student_id": 11, "subjectStatus": "save" },
+        { "name": "sam", "student_id": 12, "subjectStatus": "save" }
+    ]
+}
