@@ -1,9 +1,11 @@
 <script>
     import StudentSection from './StudentSection.svelte'
+    import StudentCourseCard from './StudentCourseCard.svelte'
     import { v4 as uuidv4 } from 'uuid'
     import { students_sample } from '../../helpers/sample_data/student_sample.json'
     import { coursework_sample } from '../../helpers/sample_data/courseWork_sample.json'
-
+    import Modal from './Modal.svelte'
+    let showModal = false
     // save to storage
     export let students = [...students_sample]
 
@@ -63,17 +65,10 @@
     {/each}
 
     <div>
-        {#if addAStudentStatus === 'edit'}
-            <input
-                type="text"
-                bind:value={studentName}
-                placeholder={studentName}
-            />
-            <button on:click={addTask}>Add</button>
-            <button on:click={() => (addAStudentStatus = 'done')}>DONE</button>
-        {:else}
-            <button on:click={() => (addAStudentStatus = 'edit')}>edit</button>
-        {/if}
+        <button on:click={() => (showModal = true)}> Add Student </button>
+        <Modal bind:showModal>
+            <StudentCourseCard />
+        </Modal>
     </div>
 </ul>
 

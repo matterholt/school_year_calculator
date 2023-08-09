@@ -64,6 +64,7 @@
     {:else}
         <p>no lessons planned</p>
     {/if}
+
     {#if pupilStatus === 'edit'}
         <div>
             <input
