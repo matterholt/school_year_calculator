@@ -6,7 +6,6 @@
 </script>
 
 <main>
-    <DateAdjustment />
     <TimeDateSetter />
     <StudentCourses />
     <ScheduleDaysOff />
