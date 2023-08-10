@@ -4,6 +4,7 @@
     import TimeDateSetter from './lib/time_date_setter/TimeDateSetter.svelte'
 
     let daysScheduledOff = 30
+    let daysPerWeek = 4
 </script>
 
 <main>

@@ -1,6 +1,6 @@
 <script>
     export let studentName = 'student'
-    let nameEdit = false
+    let nameEdit = true
     function handleHeaderUpdate(e) {
         if (e.key !== 'Enter') {
             return

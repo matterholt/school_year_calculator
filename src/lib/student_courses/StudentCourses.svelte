@@ -4,7 +4,7 @@
     import { v4 as uuidv4 } from 'uuid'
     import { students_sample } from '../../helpers/sample_data/student_sample.json'
     import { coursework_sample } from '../../helpers/sample_data/courseWork_sample.json'
-    import Modal from './Modal.svelte'
+    import Modal from '../component/Modal.svelte'
     let showModal = false
     // save to storage
     export let students = [...students_sample]
