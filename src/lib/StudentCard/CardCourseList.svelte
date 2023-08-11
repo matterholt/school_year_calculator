@@ -1,20 +1,20 @@
 <script>
     export let number_of_chapters
     export let subject_matter
-    export let lessonPerWeek
+    export let leson_per_wk
 </script>
 
 <div class="student_courses">
     <div class="student_course_summary">
+        <p>Subject</p>
+        <p>Lessons</p>
+        <p>consitancy</p>
+    </div>
+    <div class="student_course_summary">
         <p>{subject_matter}</p>
         <p>{number_of_chapters}</p>
-        <p>{lessonPerWeek}</p>
+        <p>{leson_per_wk}</p>
     </div>
-
-    <button
-        class="student_activateEdit"
-        on:click={() => console.log('edit mode')}>:::</button
-    >
 </div>
 
 <style>
@@ -26,7 +26,9 @@
     }
     .student_courses {
         display: flex;
+        flex-direction:column;
         justify-content: space-between;
         margin: 0px 10px;
     }
+
 </style>
