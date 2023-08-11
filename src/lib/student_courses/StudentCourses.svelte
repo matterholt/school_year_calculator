@@ -1,6 +1,6 @@
 <script>
     import StudentSection from './StudentSection.svelte'
-    import StudentCourseCard from './StudentCourseCard.svelte'
+    import StudentCourseCard from '../Student_course_card/StudentCourseCard.svelte'
     import { v4 as uuidv4 } from 'uuid'
     import { students_sample } from '../../helpers/sample_data/student_sample.json'
     import { coursework_sample } from '../../helpers/sample_data/courseWork_sample.json'
