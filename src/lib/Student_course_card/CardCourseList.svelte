@@ -1,20 +1,25 @@
 <script>
     export let courseWork
+
+    import InputValue from './InputValue.svelte'
 </script>
 
 <div class="student_courses">
     <div class="student_course_summary">
         <p>Subject</p>
         <p>Lessons</p>
-        <p>constancy</p>
-        <p>edit</p>
+        <p>constancy/<br />total wks</p>
     </div>
     {#each courseWork as { subject_matter, number_of_lessons, lesson_per_wk, subject_id } (subject_id)}
         <div class="student_course_summary">
             <p>{subject_matter}</p>
             <p>{number_of_lessons}</p>
-            <p>{lesson_per_wk}</p>
-            <button>✏️</button>
+            <p>
+                {lesson_per_wk} /
+                <span style="margin-left:1px"
+                    >{Math.ceil(number_of_lessons / lesson_per_wk)}</span
+                >
+            </p>
         </div>
     {/each}
 </div>
@@ -31,13 +36,5 @@
         flex-direction: column;
         justify-content: space-between;
         margin: 0px 10px;
-    }
-
-    button {
-        background: none;
-        outline: none;
-        margin: 0px 5px;
-        display: grid;
-        place-items: center;
     }
 </style>

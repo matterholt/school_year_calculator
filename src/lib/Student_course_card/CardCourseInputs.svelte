@@ -9,7 +9,13 @@
 
     let inputsActive = true
 
+    $: addIsDisable = [lesson_per_wk, subject_matter, number_of_lessons].some(
+        (x) => !x
+    )
+
     function handleButtonClick() {
+        if ([lesson_per_wk, subject_matter, number_of_lessons]) {
+        }
         let course = {
             lesson_per_wk,
             subject_matter,
@@ -45,8 +51,11 @@
                     <option value={day}>{day} day per week</option>
                 {/each}
             </select>
-            <button class="courses_inputs_button" on:click={handleButtonClick}
-                >Add it</button
+
+            <button
+                class="courses_inputs_button"
+                on:click={handleButtonClick}
+                disabled={addIsDisable}>➕</button
             >
         </div>
     {:else}
@@ -57,6 +66,12 @@
 </div>
 
 <style>
+    input[type='number'] {
+        width: 55px;
+    }
+    input[type='text'] {
+        width: 200px;
+    }
     input,
     select {
         width: 100px;
@@ -73,9 +88,15 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        margin: 20px;
+        margin: 20px 0px;
     }
     .courses_inputs_add {
         width: 100%;
+    }
+    .courses_inputs_button {
+        display: grid;
+        place-items: center;
+        width: 45px;
+        padding: 10px 0px;
     }
 </style>
