@@ -63,18 +63,6 @@
 </ul>
 
 <style>
-    /* Add your custom styles here */
-
-    input[type='text'] {
-        flex: 1;
-        padding: 5px;
-    }
-
-    button {
-        padding: 5px 10px;
-        margin-left: 10px;
-    }
-
     ul {
         list-style: none;
         padding: 0;
