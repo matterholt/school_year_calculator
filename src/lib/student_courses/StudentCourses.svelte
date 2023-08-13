@@ -1,11 +1,8 @@
 <script>
     import StudentSection from './StudentSection.svelte'
-    import StudentCourseCard from '../Student_course_card/StudentCourseCard.svelte'
     import { v4 as uuidv4 } from 'uuid'
     import { students_sample } from '../../helpers/sample_data/student_sample.json'
     import { coursework_sample } from '../../helpers/sample_data/courseWork_sample.json'
-    import Modal from '../component/Modal.svelte'
-    let showModal = false
     // save to storage
     export let students = [...students_sample]
 
@@ -21,7 +18,7 @@
     function pupilsClasses(id) {
         return classesAdded.filter((x) => x.student_id === id)
     }
-    function addToPupilsClases(coursework) {
+    function addToPupilsClasses(coursework) {
         classesAdded = [...classesAdded, coursework]
     }
 
@@ -59,17 +56,10 @@
             {pupil}
             {deleteById}
             {updateSubjectStatus}
-            {addToPupilsClases}
+            {addToPupilsClasses}
             studentCourseWork={pupilsClasses(pupil.student_id)}
         />
     {/each}
-
-    <div>
-        <button on:click={() => (showModal = true)}> Add Student </button>
-        <Modal bind:showModal>
-            <StudentCourseCard />
-        </Modal>
-    </div>
 </ul>
 
 <style>
@@ -89,6 +79,5 @@
         list-style: none;
         padding: 0;
         margin: 0px 10px;
-        grid-row: 2;
     }
 </style>

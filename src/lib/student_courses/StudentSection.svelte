@@ -4,7 +4,7 @@
     export let pupil = {}
     export let studentCourseWork = []
     export let updateSubjectStatus
-    export let addToPupilsClases
+    export let addToPupilsClasses
     export let deleteById
 
     $: pupilStatus = 'edit'
@@ -49,7 +49,7 @@
     <CourseWork
         pupilId={pupil.student_id}
         {studentCourseWork}
-        {addToPupilsClases}
+        {addToPupilsClasses}
         pupilStatus={pupil.subjectStatus}
     />
 </li>

@@ -4,7 +4,7 @@
     export let studentCourseWork = []
     export let pupilStatus
     export let pupilId
-    export let addToPupilsClases
+    export let addToPupilsClasses
 
     // supply a function that can add the new cousrse work object to masters
 
@@ -27,7 +27,7 @@
                 current_chapter: 0,
             },
         ]
-        addToPupilsClases({
+        addToPupilsClasses({
             subject_matter: subjectMatter,
             number_of_chapters: totalLessons,
             subject_id: uuidv4(),
