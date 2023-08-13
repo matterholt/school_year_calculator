@@ -64,7 +64,6 @@
         flex-direction: column;
         max-width: 400px;
         margin: 0 auto;
-        grid-row: 2;
     }
 
     label {

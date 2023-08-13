@@ -77,7 +77,6 @@
         display: grid;
         grid-template-rows: repeat(4, 1fr);
         height: min-content;
-        grid-column: 1/3;
     }
     .schedule_row {
         display: grid;
