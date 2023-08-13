@@ -1,5 +1,6 @@
 <script>
     export let courseWork
+    export let schoolWeeks = 36
 
     import InputValue from './InputValue.svelte'
 </script>
@@ -8,17 +9,14 @@
     <div class="student_course_summary">
         <p>Subject</p>
         <p>Lessons</p>
-        <p>constancy/<br />total wks</p>
+        <p>per week at <br />{schoolWeeks} wks</p>
     </div>
     {#each courseWork as { subject_matter, number_of_lessons, lesson_per_wk, subject_id } (subject_id)}
         <div class="student_course_summary">
             <p>{subject_matter}</p>
             <p>{number_of_lessons}</p>
             <p>
-                {lesson_per_wk} /
-                <span style="margin-left:1px"
-                    >{Math.ceil(number_of_lessons / lesson_per_wk)}</span
-                >
+                <span style="margin-left:1px">{lesson_per_wk}</span>
             </p>
         </div>
     {/each}

@@ -8,7 +8,7 @@
             student_id: 11,
             subject_id: 110,
             subject_matter: 'math',
-            number_of_lessons: 204,
+            number_of_lessons: 120,
             lesson_per_wk: 4,
             current_chapter: 0,
             status: 'saved',
