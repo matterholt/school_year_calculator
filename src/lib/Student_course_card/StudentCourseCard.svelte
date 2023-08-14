@@ -3,7 +3,7 @@
     import CardCourseInputs from './CardCourseInputs.svelte'
     import CardCourseList from './CardCourseList.svelte'
 
-    export let addToPupilsClasses
+    let addToPupilsClasses
 
     let courseWork = [
         {

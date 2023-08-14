@@ -1,15 +1,20 @@
 <script>
+    import { onDestroy } from 'svelte'
     import StudentSection from './StudentSection.svelte'
     import { v4 as uuidv4 } from 'uuid'
-    import { students_sample } from '../../helpers/sample_data/student_sample.json'
     import { coursework_sample } from '../../helpers/sample_data/courseWork_sample.json'
-    // save to storage
-    export let students = [...students_sample]
+    import { enrolledStudents } from '../../store/enrolledStudents.js'
+
+    let students
+
+    const unsubscribe = enrolledStudents.subscribe((value) => {
+        students = value
+    })
+
+    onDestroy(unsubscribe)
 
     export let classesAdded = [...coursework_sample]
     // save above to storage
-
-    $: console.log(classesAdded)
 
     let addAStudentStatus = ''
 

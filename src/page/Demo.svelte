@@ -2,20 +2,17 @@
     export let dayPlanedOff = []
     export let studentCourseWork = []
     export let schoolYearSettings = {}
-    import { count } from '../store/DemoStore'
+    import { dateOnRefreshed } from '../store/currentDate.js'
 
     let countValue
 
-    count.subscribe((value) => {
+    dateOnRefreshed.subscribe((value) => {
         countValue = value
     })
 
     import moment from 'moment'
-
     const currentDate = moment().format('MM-DD-YYYY')
-
     const weekNumberOfStart = moment(countValue).week()
-
     const currentWeekOfSchool = moment('10-05-2023').week() - weekNumberOfStart
 </script>
 
@@ -33,6 +30,10 @@
 </script>
 
 <div class="layout">
+    <div class="header">
+        <p>Date: {currentDate}</p>
+        <p>Week of school: {currentWeekOfSchool}</p>
+    </div>
     <div class="timeDateSetter">
         <TimeDateSetter {daysScheduledOff} />
     </div>
@@ -41,10 +42,6 @@
         <Modal bind:showModal>
             <StudentCourseCard />
         </Modal>
-        <div style=" display:flex; width:250px; justify-content:space-evenly">
-            <p>Date: {currentDate}</p>
-            <p>Week: {currentWeekOfSchool}</p>
-        </div>
     </div>
     <div class="studentCourses">
         <StudentCourses />
@@ -58,23 +55,30 @@
     .layout {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: min-content 50px 1fr;
+        grid-template-rows: 50px min-content 50px 1fr;
     }
     .timeDateSetter {
         grid-column: 1/3;
-        grid-row: 1;
+        grid-row: 2;
     }
     .actions {
         grid-column: 1/3;
-        grid-row: 2;
+        grid-row: 3;
         display: flex;
     }
     .studentCourses {
         grid-column: 1;
-        grid-row: 3;
+        grid-row: 4;
     }
     .scheduleDaysOff {
         grid-column: 2;
-        grid-row: 3;
+        grid-row: 4;
+    }
+    .header {
+        grid-column: 1/3;
+        grid-row: 1;
+        display: flex;
+        width: 250px;
+        justify-content: space-evenly;
     }
 </style>
