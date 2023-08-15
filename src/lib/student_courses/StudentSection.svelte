@@ -6,12 +6,6 @@
     export let updateSubjectStatus
     export let addToPupilsClasses
     export let deleteById
-
-    $: pupilStatus = 'edit'
-
-    function updateStatus(action) {
-        pupilStatus = action
-    }
 </script>
 
 <li>

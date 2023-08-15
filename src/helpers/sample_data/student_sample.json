@@ -1,6 +1,16 @@
 {
     "students_sample": [
-        { "name": "sarah", "student_id": 11, "subjectStatus": "save" },
-        { "name": "sam", "student_id": 12, "subjectStatus": "save" }
+        {
+            "name": "sarah",
+            "student_id": 11,
+            "grade_level": "4",
+            "status": "enrolled"
+        },
+        {
+            "name": "sam",
+            "student_id": 12,
+            "grade_level": "2",
+            "status": "enrolled"
+        }
     ]
 }

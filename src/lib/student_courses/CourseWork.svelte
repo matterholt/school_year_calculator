@@ -20,7 +20,7 @@
             ...studentCourseWork,
             {
                 subject_matter: subjectMatter,
-                number_of_chapters: totalLessons,
+                number_of_lessons: totalLessons,
                 subject_id: uuidv4(),
                 courseStatus: 'edit',
                 student_id: pupilId,
@@ -29,7 +29,7 @@
         ]
         addToPupilsClasses({
             subject_matter: subjectMatter,
-            number_of_chapters: totalLessons,
+            number_of_lessons: totalLessons,
             subject_id: uuidv4(),
             courseStatus: 'edit',
             student_id: pupilId,
@@ -51,7 +51,7 @@
             <div class="student_courses">
                 <div class="student_course_summary">
                     <p>{studentclass.subject_matter}</p>
-                    <p>{studentclass.number_of_chapters}</p>
+                    <p>{studentclass.number_of_lessons}</p>
                 </div>
                 {#if pupilStatus === 'edit'}
                     <button

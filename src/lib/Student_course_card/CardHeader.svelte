@@ -1,6 +1,15 @@
 <script>
-    export let studentName = 'student'
+    import { enrolledStudents } from '../../store/enrolledStudents.js'
+
+    let studentName = `Student ${$enrolledStudents.length + 1}`
+
     let nameEdit = true
+    import { onMount } from 'svelte'
+
+    onMount(() => {
+        enrolledStudents.test(studentName)
+    })
+
     function handleHeaderUpdate(e) {
         if (e.key !== 'Enter') {
             return
