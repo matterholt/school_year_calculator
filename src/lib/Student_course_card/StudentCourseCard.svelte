@@ -4,6 +4,10 @@
     import CardCourseList from './CardCourseList.svelte'
     import { enrolledStudents } from '../../store/enrolledStudents.js'
 
+    export let showModal
+
+    let studentName
+
     let courseWork = []
 
     function addToStudentCourses(newCourse) {
@@ -17,13 +21,23 @@
         console.log(newCourse)
         courseWork = [...courseWork, NewCouseItem]
     }
+
+    function enrollNewStudent() {
+        const studentStuct = {
+            name: studentName,
+            grade_level: 1234,
+        }
+
+        enrolledStudents.newEnrollment(studentStuct)
+        showModal = 'outSideClosed'
+    }
 </script>
 
 <div class="studentCourseCard">
-    <CardHeader />
+    <CardHeader bind:studentName />
     <CardCourseList {courseWork} />
     <CardCourseInputs {addToStudentCourses} />
-    <button>Add em</button>
+    <button on:click={enrollNewStudent}> Add em </button>
 </div>
 
 <style>

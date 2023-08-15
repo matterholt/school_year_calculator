@@ -1,14 +1,13 @@
 <script>
     import { enrolledStudents } from '../../store/enrolledStudents.js'
 
-    let studentName = `Student ${$enrolledStudents.length + 1}`
+    let gradeLevelAvailable = [...Array(12).keys(), 'k']
+
+    export let studentName = `Student ${$enrolledStudents.length + 1}`
+
+    let gradeLevel = '1'
 
     let nameEdit = true
-    import { onMount } from 'svelte'
-
-    onMount(() => {
-        enrolledStudents.test(studentName)
-    })
 
     function handleHeaderUpdate(e) {
         if (e.key !== 'Enter') {
@@ -58,5 +57,12 @@
     .buttonEdit {
         width: 100%;
         text-align: left;
+    }
+    input[type='number'] {
+        width: 45px;
+        margin-left: 15px;
+        border-radius: 7px;
+        border: none;
+        padding-left: 10px;
     }
 </style>

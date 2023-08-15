@@ -3,23 +3,27 @@
 
     let dialog // HTMLDialogElement
 
-    $: if (dialog && showModal) dialog.showModal()
+    $: if (dialog && showModal === 'open') dialog.showModal()
+    $: if (showModal === 'outSideClosed') handleModal()
 
     function handleModal() {
+        console.log('update')
+        showModal = 'closed'
         dialog.close()
     }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
-<dialog bind:this={dialog} on:close={() => (showModal = false)}>
+<dialog bind:this={dialog} on:close={() => (showModal = 'closed')}>
     <!-- svelte-ignore a11y-no-static-element-interactions -->
+
     <div on:click|stopPropagation>
+        <button on:click={handleModal}>X</button>
+
         <slot name="header" />
         <hr />
         <slot />
-        <hr />
         <!-- svelte-ignore a11y-autofocus -->
-        <button autofocus on:click={handleModal}>close modal</button>
     </div>
 </dialog>
 

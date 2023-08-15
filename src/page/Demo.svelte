@@ -23,7 +23,7 @@
     import StudentCourseCard from '../lib/Student_course_card/StudentCourseCard.svelte'
 
     import Modal from '../lib/component/Modal.svelte'
-    let showModal = false
+    let showModal = 'closed'
 
     let daysScheduledOff = 30
     let daysPerWeek = 4
@@ -38,9 +38,9 @@
         <TimeDateSetter {daysScheduledOff} />
     </div>
     <div class="actions">
-        <button on:click={() => (showModal = true)}> Add Student </button>
+        <button on:click={() => (showModal = 'open')}> Add Student </button>
         <Modal bind:showModal>
-            <StudentCourseCard />
+            <StudentCourseCard bind:showModal />
         </Modal>
     </div>
     <div class="studentCourses">
