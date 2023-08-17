@@ -1,10 +1,13 @@
 <script>
+    import { schooldaysperweek } from '../../store/schoolyear'
+    $: console.log($schooldaysperweek)
+
     import moment from 'moment'
     export let daysScheduledOff = 30
 
     let startDate = moment('2023-09-05').format('YYYY-MM-DD')
 
-    let daysPerWeek = 4
+    $: daysPerWeek = $schooldaysperweek
     let longestLesson = 120
 
     let typicalSchoolWeeks = 36
@@ -37,6 +40,7 @@
             day per week : <input
                 type="number"
                 bind:value={daysPerWeek}
+                on:change={() => schooldaysperweek.set(daysPerWeek)}
                 min="1"
                 max="7"
             />
