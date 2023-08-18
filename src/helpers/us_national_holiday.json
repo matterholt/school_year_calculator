@@ -1,44 +1,64 @@
 {
-  "holidays": [
-    {
-      "name": "New Year's Day",
-      "date": "January 1"
-    },
-    {
-      "name": "Martin Luther King Jr. Day",
-      "date": "Third Monday in January"
-    },
-    {
-      "name": "Presidents' Day",
-      "date": "Third Monday in February"
-    },
-    {
-      "name": "Memorial Day",
-      "date": "Last Monday in May"
-    },
-    {
-      "name": "Independence Day",
-      "date": "July 4"
-    },
-    {
-      "name": "Labor Day",
-      "date": "First Monday in September"
-    },
-    {
-      "name": "Columbus Day",
-      "date": "Second Monday in October"
-    },
-    {
-      "name": "Veterans Day",
-      "date": "November 11"
-    },
-    {
-      "name": "Thanksgiving Day",
-      "date": "Fourth Thursday in November"
-    },
-    {
-      "name": "Christmas Day",
-      "date": "December 25"
-    }
-  ]
+    "holidays": [
+        {
+            "name": "New Year's Day",
+            "date": "January 1",
+            "dayValue": 1,
+            "isObserved": false
+        },
+        {
+            "name": "Martin Luther King Jr. Day",
+            "date": "Third Monday in January",
+            "dayValue": 1,
+            "isObserved": false
+        },
+        {
+            "name": "Presidents' Day",
+            "date": "Third Monday in February",
+            "dayValue": 1,
+            "isObserved": false
+        },
+        {
+            "name": "Memorial Day",
+            "date": "Last Monday in May",
+            "dayValue": 1,
+            "isObserved": false
+        },
+        {
+            "name": "Independence Day",
+            "date": "July 4",
+            "dayValue": 1,
+            "isObserved": false
+        },
+        {
+            "name": "Labor Day",
+            "date": "First Monday in September",
+            "dayValue": 1,
+            "isObserved": false
+        },
+        {
+            "name": "Columbus Day",
+            "date": "Second Monday in October",
+            "dayValue": 1,
+            "isObserved": false
+        },
+        {
+            "name": "Veterans Day",
+            "date": "November 11",
+            "dayValue": 1,
+            "isObserved": false
+        },
+        {
+            "name": "Thanksgiving Day",
+            "date": "Fourth Thursday in November",
+            "dayValue": 2,
+            "isObserved": false
+        },
+        {
+            "name": "Christmas Day",
+            "date": "December 25",
+            "dayValue": 15,
+            "isObserved": false
+        }
+    ]
 }
