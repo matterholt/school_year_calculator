@@ -19,14 +19,22 @@
 <script>
     import ScheduleDaysOff from '../lib/schedule_days_off/ScheduleDaysOff.svelte'
     import StudentCourses from '../lib/student_courses/StudentCourses.svelte'
+    import Tabs from '../lib/component/Tabs.svelte'
     import TimeDateSetter from '../lib/time_date_setter/TimeDateSetter.svelte'
     import StudentCourseCard from '../lib/Student_course_card/StudentCourseCard.svelte'
+    import NationalHoliday from '../lib/national_holidays/NationalHoliday.svelte'
 
     import Modal from '../lib/component/Modal.svelte'
     let showModal = 'closed'
 
     let daysScheduledOff = 30
-    let daysPerWeek = 4
+
+    let sections = [
+        { label: 'Student', value: 1, component: StudentCourses },
+        { label: 'Vacation', value: 2, component: ScheduleDaysOff },
+        { label: 'Sick Day', value: 3, component: ScheduleDaysOff },
+        { label: 'National Holiday', value: 4, component: NationalHoliday },
+    ]
 </script>
 
 <div class="layout">
@@ -43,11 +51,8 @@
             <StudentCourseCard bind:showModal />
         </Modal>
     </div>
-    <div class="studentCourses">
-        <StudentCourses />
-    </div>
-    <div class="scheduleDaysOff">
-        <ScheduleDaysOff bind:daysScheduledOff />
+    <div class="data">
+        <Tabs items={sections} />
     </div>
 </div>
 
@@ -66,14 +71,14 @@
         grid-row: 3;
         display: flex;
     }
-    .studentCourses {
-        grid-column: 1;
+    .data {
+        grid-column: 1/3;
         grid-row: 4;
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
     }
-    .scheduleDaysOff {
-        grid-column: 2;
-        grid-row: 4;
-    }
+
     .header {
         grid-column: 1/3;
         grid-row: 1;

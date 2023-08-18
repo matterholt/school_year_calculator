@@ -1,43 +1,5 @@
 <script>
-    import { v4 as uuidv4 } from 'uuid'
-
     export let studentCourseWork = []
-    export let pupilStatus
-    export let pupilId
-    export let addToPupilsClasses
-
-    // supply a function that can add the new cousrse work object to masters
-
-    let subjectMatter = ''
-    let totalLessons = ''
-
-    function addToStudentCourses() {
-        if (!subjectMatter || !totalLessons) {
-            return
-        }
-
-        studentCourseWork = [
-            ...studentCourseWork,
-            {
-                subject_matter: subjectMatter,
-                number_of_lessons: totalLessons,
-                subject_id: uuidv4(),
-                courseStatus: 'edit',
-                student_id: pupilId,
-                current_chapter: 0,
-            },
-        ]
-        addToPupilsClasses({
-            subject_matter: subjectMatter,
-            number_of_lessons: totalLessons,
-            subject_id: uuidv4(),
-            courseStatus: 'edit',
-            student_id: pupilId,
-            current_chapter: 0,
-        })
-        subjectMatter = ''
-        totalLessons = ''
-    }
 </script>
 
 <div class="student_classlist">
@@ -47,41 +9,16 @@
             <p class="course_item-bold">Total Lessons</p>
         </div>
 
-        {#each studentCourseWork as studentclass, index}
+        {#each studentCourseWork as studentLessons, index}
             <div class="student_courses">
                 <div class="student_course_summary">
-                    <p>{studentclass.subject_matter}</p>
-                    <p>{studentclass.number_of_lessons}</p>
+                    <p>{studentLessons.subject_matter}</p>
+                    <p>{studentLessons.number_of_lessons}</p>
                 </div>
-                {#if pupilStatus === 'edit'}
-                    <button
-                        class="student_activateEdit"
-                        on:click={() => console.log('edit mode')}>:::</button
-                    >
-                {/if}
             </div>
         {/each}
     {:else}
         <p>no lessons planned</p>
-    {/if}
-
-    {#if pupilStatus === 'edit'}
-        <div>
-            <input
-                type="text"
-                placeholder="subject matter"
-                id="subjectMatter"
-                bind:value={subjectMatter}
-            />
-            <input
-                type="number"
-                placeholder="Total lessons"
-                id="totalLessons"
-                bind:value={totalLessons}
-                min="1"
-            />
-            <button on:click={() => addToStudentCourses()}>ADD</button>
-        </div>
     {/if}
 </div>
 

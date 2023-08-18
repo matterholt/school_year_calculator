@@ -3,9 +3,6 @@
 
     export let pupil = {}
     export let studentCourseWork = []
-    export let updateSubjectStatus
-    export let addToPupilsClasses
-    export let deleteById
 </script>
 
 <li>
@@ -13,47 +10,12 @@
         <p class="sudentName">
             {pupil.name}
         </p>
-
-        {#if pupil.subjectStatus == 'edit'}
-            <div>
-                <button
-                    class="remove_X"
-                    on:click={() => deleteById(pupil.student_id)}>Delete</button
-                >
-                <button
-                    class="remove_X"
-                    on:click={() =>
-                        updateSubjectStatus(pupil.student_id, 'save')}
-                    >Save</button
-                >
-            </div>
-        {/if}
-        {#if pupil.subjectStatus == 'save'}
-            <div>
-                <button
-                    class="remove_X"
-                    on:click={() =>
-                        updateSubjectStatus(pupil.student_id, 'edit')}
-                    >Edit</button
-                >
-            </div>
-        {/if}
     </div>
 
-    <CourseWork
-        pupilId={pupil.student_id}
-        {studentCourseWork}
-        {addToPupilsClasses}
-        pupilStatus={pupil.subjectStatus}
-    />
+    <CourseWork {studentCourseWork} />
 </li>
 
 <style>
-    button {
-        padding: 5px 10px;
-        margin-left: 10px;
-    }
-
     li {
         display: flex;
         flex-direction: column;

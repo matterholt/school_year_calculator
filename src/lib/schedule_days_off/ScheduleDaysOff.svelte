@@ -1,8 +1,6 @@
 <!-- Form.svelte -->
 <script>
     import { onMount } from 'svelte'
-    import { holidays } from '../../helpers/us_national_holiday.json'
-    import NationalHoliday from './NationalHoliday.svelte'
     import DaysOff from './DaysOff.svelte'
     export let daysScheduledOff = 0
 
@@ -37,13 +35,6 @@
 </script>
 
 <form on:submit={handleSubmit}>
-    <section>
-        <NationalHoliday
-            {holidays}
-            bind:selectedDays={selectedNationalHoliday}
-        />
-    </section>
-
     <section>
         <label for="plannedHolidays">Planned Holidays / Vacations:</label>
         <DaysOff bind:scheduledDays={plannedHolidays} />
