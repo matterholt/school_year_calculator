@@ -23,6 +23,7 @@
     import TimeDateSetter from '../lib/time_date_setter/TimeDateSetter.svelte'
     import StudentCourseCard from '../lib/Student_course_card/StudentCourseCard.svelte'
     import NationalHoliday from '../lib/national_holidays/NationalHoliday.svelte'
+    import PlannedDaysOff from '../lib/planned_days_off/PlannedDaysOff.svelte'
 
     import Modal from '../lib/component/Modal.svelte'
     let showModal = 'closed'
@@ -31,7 +32,7 @@
 
     let sections = [
         { label: 'Student', value: 1, component: StudentCourses },
-        { label: 'Vacation', value: 2, component: ScheduleDaysOff },
+        { label: 'Planned Days Off', value: 2, component: PlannedDaysOff },
         { label: 'Sick Day', value: 3, component: ScheduleDaysOff },
         { label: 'National Holiday', value: 4, component: NationalHoliday },
     ]

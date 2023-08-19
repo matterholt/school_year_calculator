@@ -1,7 +1,7 @@
 <!-- Form.svelte -->
 <script>
     import { onMount } from 'svelte'
-    import DaysOff from './DaysOff.svelte'
+    import DaysOff from '../component/DaysOff.svelte'
     export let daysScheduledOff = 0
 
     let startDate = ''
@@ -9,7 +9,6 @@
     let endDate = ''
 
     let selectedNationalHoliday = []
-    let plannedHolidays = [{ text: 'dayone', date: '01-01-01' }]
     let unplannedHolidays = [{ text: 'not planned', date: '02-02-02' }]
 
     $: NumberOfDaysWithNoScooling = [
@@ -35,11 +34,6 @@
 </script>
 
 <form on:submit={handleSubmit}>
-    <section>
-        <label for="plannedHolidays">Planned Holidays / Vacations:</label>
-        <DaysOff bind:scheduledDays={plannedHolidays} />
-    </section>
-
     <section>
         <label for="unplannedHolidays">Unplanned Days:</label>
         <DaysOff bind:scheduledDays={unplannedHolidays} />
