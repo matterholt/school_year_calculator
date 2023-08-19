@@ -1,33 +1,39 @@
 <script>
     import { holidays } from '../../helpers/us_national_holiday.json'
+    import { noLessonDays } from '../../store/noLessonDays.js'
+    const { nationalHoliday } = $noLessonDays
 
     // check the store for this list if no list then will need ot construct this format
-    let nationalHolidayList = holidays
+    let nationalHolidayList =
+        nationalHoliday.length !== 0 ? nationalHoliday : holidays
 
-    let unselectedDays = nationalHolidayList.filter(
-        (holiday) => !holiday.isObserved
-    )
-    let selectedDays = nationalHolidayList.filter(
-        (holiday) => holiday.isObserved
-    )
+    $: unselectedDays = nationalHolidayList
+        .filter((holiday) => !holiday.isObserved)
+        .sort((a, b) => a.id - b.id)
+    $: selectedDays = nationalHolidayList
+        .filter((holiday) => holiday.isObserved)
+        .sort((a, b) => a.id - b.id)
 
-    function handle(selectedHoliday, action) {
-        let holiday = nationalHolidayList.find((x) => x.name == selectedHoliday)
+    function handle(selectedHoliday) {
+        let holiday = nationalHolidayList.find(
+            (x) => x.name === selectedHoliday
+        )
+        let cleanHoliday = nationalHolidayList.filter(
+            (x) => x.name !== selectedHoliday
+        )
+        let updateNationHolidayList = [
+            ...cleanHoliday,
+            {
+                ...holiday,
+                isObserved: !holiday.isObserved,
+            },
+        ]
 
-        if (action === 'select') {
-            unselectedDays = unselectedDays.filter(
-                (y) => y.name !== holiday.name
-            )
-            selectedDays = [...selectedDays, holiday].sort(
-                (a, b) => a.id - b.id
-            )
-        }
-        if (action === 'unselect') {
-            selectedDays = selectedDays.filter((y) => y.name !== holiday.name)
-            unselectedDays = [...unselectedDays, holiday].sort(
-                (a, b) => a.id - b.id
-            )
-        }
+        noLessonDays.set({
+            ...noLessonDays,
+            nationalHoliday: updateNationHolidayList,
+        })
+        nationalHolidayList = updateNationHolidayList
     }
     $: numberOfDays = selectedDays.reduce((acc, crt) => acc + crt.dayValue, 0)
 </script>
@@ -39,7 +45,7 @@
             <div class="holiday">
                 <button
                     class="holiday_unselection"
-                    on:click={() => handle(holiday.name, 'select')}
+                    on:click={() => handle(holiday.name)}
                 >
                     <p class="holiday_title">{holiday.name}</p>
                     <span class="sub">{holiday.date}</span>
@@ -53,8 +59,7 @@
             <div class="holiday selected">
                 <button
                     class="holiday_selection"
-                    on:click={() => handle(selectDay.name, 'unselect')}
-                    >X</button
+                    on:click={() => handle(selectDay.name)}>X</button
                 >
                 <p class="holiday_title">{selectDay.name}</p>
 
