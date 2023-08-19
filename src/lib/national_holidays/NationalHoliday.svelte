@@ -17,6 +17,7 @@
     let unselectedDays = nationalHolidayList.filter(
         (holiday) => !holiday.isObserved
     )
+
     let selectedDays = nationalHolidayList.filter(
         (holiday) => holiday.isObserved
     )
@@ -28,13 +29,18 @@
             unselectedDays = unselectedDays.filter(
                 (y) => y.name !== holiday.name
             )
-            selectedDays = [...selectedDays, holiday]
+            selectedDays = [...selectedDays, holiday].sort(
+                (a, b) => a.id - b.id
+            )
         }
         if (action === 'unselect') {
             selectedDays = selectedDays.filter((y) => y.name !== holiday.name)
-            unselectedDays = [...unselectedDays, holiday]
+            unselectedDays = [...unselectedDays, holiday].sort(
+                (a, b) => a.id - b.id
+            )
         }
     }
+    $: numberOfDays = selectedDays.reduce((acc, crt) => acc + crt.dayValue, 0)
 </script>
 
 <div class="national_holiday">
@@ -53,7 +59,7 @@
         {/each}
     </section>
     <section>
-        <h2>Selected Holiday</h2>
+        <h2>Selected Holiday {numberOfDays}</h2>
         {#each selectedDays as selectDay}
             <div class="holiday selected">
                 <button
