@@ -2,22 +2,11 @@
     import { holidays } from '../../helpers/us_national_holiday.json'
 
     // check the store for this list if no list then will need ot construct this format
-    const TEMP_local = false
-    let nationalHolidayList = TEMP_local
-        ? [
-              {
-                  name: "New Year's Day",
-                  date: 'January 1',
-                  dayValue: 1,
-                  isObserved: false,
-              },
-          ]
-        : holidays
+    let nationalHolidayList = holidays
 
     let unselectedDays = nationalHolidayList.filter(
         (holiday) => !holiday.isObserved
     )
-
     let selectedDays = nationalHolidayList.filter(
         (holiday) => holiday.isObserved
     )
@@ -90,7 +79,7 @@
     .holiday {
         width: 250px;
         height: 75px;
-        margin: 20px;
+        margin: 6px;
     }
     .selected {
         display: grid;

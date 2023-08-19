@@ -59,9 +59,6 @@
     {#each students as pupil, index}
         <StudentSection
             {pupil}
-            {deleteById}
-            {updateSubjectStatus}
-            {addToPupilsClasses}
             studentCourseWork={pupilsClasses(pupil.student_id)}
         />
     {/each}
