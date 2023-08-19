@@ -14,22 +14,39 @@
           ]
         : holidays
 
-    let unselectedDays = nationalHolidayList
-    let selectedDays = []
+    let unselectedDays = nationalHolidayList.filter(
+        (holiday) => !holiday.isObserved
+    )
+    let selectedDays = nationalHolidayList.filter(
+        (holiday) => holiday.isObserved
+    )
 
-    function handle(selectedHoliday) {
+    function handle(selectedHoliday, action) {
         let holiday = nationalHolidayList.find((x) => x.name == selectedHoliday)
-        unselectedDays = unselectedDays.filter((y) => y.name !== holiday.name)
-        selectedDays = [...selectedDays, holiday]
+
+        if (action === 'select') {
+            unselectedDays = unselectedDays.filter(
+                (y) => y.name !== holiday.name
+            )
+            selectedDays = [...selectedDays, holiday]
+        }
+        if (action === 'unselect') {
+            selectedDays = selectedDays.filter((y) => y.name !== holiday.name)
+            unselectedDays = [...unselectedDays, holiday]
+        }
     }
 </script>
 
 <div class="national_holiday">
     <section>
+        <h2>Available Holiday</h2>
         {#each unselectedDays as holiday, index}
-            <div class="holiday-checkbox">
-                <button on:click={() => handle(holiday.name)}>
-                    <span class="checkmark">{holiday.name}</span>
+            <div class="holiday">
+                <button
+                    class="holiday_unselection"
+                    on:click={() => handle(holiday.name, 'select')}
+                >
+                    <p class="holiday_title">{holiday.name}</p>
                     <span class="sub">{holiday.date}</span>
                 </button>
             </div>
@@ -38,7 +55,24 @@
     <section>
         <h2>Selected Holiday</h2>
         {#each selectedDays as selectDay}
-            <p>{selectDay.name},>>>>{selectDay.dayValue}</p>
+            <div class="holiday selected">
+                <button
+                    class="holiday_selection"
+                    on:click={() => handle(selectDay.name, 'unselect')}
+                    >X</button
+                >
+                <p class="holiday_title">{selectDay.name}</p>
+
+                <label class="selectedLabel" for={selectDay.name + 'daysOff'}>
+                    Days Off
+                    <input
+                        class="selectedInput"
+                        id={selectDay.name + 'daysOff'}
+                        bind:value={selectDay.dayValue}
+                        type="number"
+                    />
+                </label>
+            </div>
         {/each}
     </section>
 </div>
@@ -47,16 +81,51 @@
     .national_holiday {
         display: flex;
     }
-    .holiday-checkbox {
-        margin: 10px;
-        text-align: left;
+    .holiday {
+        width: 250px;
+        height: 75px;
+        margin: 20px;
     }
-    button {
-        width: 100%;
+    .selected {
+        display: grid;
+        border: solid 5px #202020;
+        border-radius: 15px;
+        grid-template-areas: 'button name label';
+        align-items: center;
+    }
+    .holiday_title {
+        grid-area: name;
+        margin: 0;
+        padding: 0;
+    }
+
+    .holiday_selection {
+        grid-area: button;
+        height: 50%;
+        place-self: baseline;
+    }
+    .selectedInput {
+        grid-area: input;
+    }
+    .selectedLabel {
+        grid-area: label;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    }
+    button {
+        height: 100%;
+        width: 100%;
+    }
+    input {
+        display: grid;
+        place-items: center;
+        padding: 10px;
+        font-size: 15px;
+        width: 50%;
+        border: none;
+        border-radius: 5px;
+        place-self: center;
+        height: 50%;
     }
 
     .sub {
