@@ -1,7 +1,7 @@
 <!-- Form.svelte -->
 <script>
     import { onMount } from 'svelte'
-    import DaysOff from '../component/DaysOff.svelte'
+    import DaysOff from '../DaysOff.svelte'
     export let daysScheduledOff = 0
 
     let startDate = ''
@@ -27,7 +27,6 @@
             sessionsPerWeek,
             endDate,
             selectedNationalHoliday,
-            plannedHolidays,
             unplannedHolidays,
         })
     }
