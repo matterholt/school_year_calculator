@@ -1,7 +1,7 @@
 <!-- Form.svelte -->
 <script>
     import { onMount } from 'svelte'
-    import DaysOff from '../DaysOff.svelte'
+    import DaysOff from '../EventDateInput.svelte'
     export let daysScheduledOff = 0
 
     let startDate = ''
