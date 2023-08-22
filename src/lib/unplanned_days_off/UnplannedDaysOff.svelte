@@ -1,11 +1,17 @@
 <script>
-    import DaysOff from '../component/EventDateInput.svelte'
-    let plannedHolidays = [{ text: 'dayone', date: '01-01-01' }]
+    import EventDateView from '../component/EventDateView.svelte'
+    import EventDateInput from '../component/EventDateInput.svelte'
+
+    import { noLessonDays } from '../../store/noLessonDays.js'
+    const { unPlannedDaysOff } = $noLessonDays
+
+    let unplannedHolidays = unPlannedDaysOff
 </script>
 
 <section>
-    <label for="plannedHolidays">Unplanned Days/ Sick:</label>
-    <DaysOff bind:scheduledDays={plannedHolidays} />
+    <label for="unplannedHolidays">Unplanned Days/ Sick:</label>
+    <EventDateView scheduleEvent={unplannedHolidays} />
+    <EventDateInput bind:scheduledDays={unplannedHolidays} />
 </section>
 
 <style>

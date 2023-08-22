@@ -10,6 +10,7 @@
     $: unselectedDays = nationalHolidayList
         .filter((holiday) => !holiday.isObserved)
         .sort((a, b) => a.id - b.id)
+
     $: selectedDays = nationalHolidayList
         .filter((holiday) => holiday.isObserved)
         .sort((a, b) => a.id - b.id)
@@ -30,7 +31,7 @@
         ]
 
         noLessonDays.set({
-            ...noLessonDays,
+            ...$noLessonDays,
             nationalHoliday: updateNationHolidayList,
         })
         nationalHolidayList = updateNationHolidayList

@@ -12,10 +12,11 @@
         if (newTask.trim() !== '') {
             scheduledDays = [
                 ...scheduledDays,
-                { text: newTask, date: vakStart },
+                { text: newTask, StartDate: vakStart, EndDate: vakEnd },
             ]
             newTask = ''
             vakStart = ''
+            vakEnd = ''
         }
     }
 </script>
