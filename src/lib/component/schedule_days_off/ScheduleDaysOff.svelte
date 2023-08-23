@@ -1,16 +1,14 @@
 <!-- Form.svelte -->
 <script>
     import { onMount } from 'svelte'
-    import { holidays } from '../../helpers/us_national_holiday.json'
-    import NationalHoliday from './NationalHoliday.svelte'
-    import DaysOff from './DaysOff.svelte'
+    import DaysOff from '../EventDateInput.svelte'
+    export let daysScheduledOff = 0
 
     let startDate = ''
     let sessionsPerWeek = 5
     let endDate = ''
 
     let selectedNationalHoliday = []
-    let plannedHolidays = [{ text: 'dayone', date: '01-01-01' }]
     let unplannedHolidays = [{ text: 'not planned', date: '02-02-02' }]
 
     $: NumberOfDaysWithNoScooling = [
@@ -29,25 +27,12 @@
             sessionsPerWeek,
             endDate,
             selectedNationalHoliday,
-            plannedHolidays,
             unplannedHolidays,
         })
     }
 </script>
 
 <form on:submit={handleSubmit}>
-    <section>
-        <NationalHoliday
-            {holidays}
-            bind:selectedDays={selectedNationalHoliday}
-        />
-    </section>
-
-    <section>
-        <label for="plannedHolidays">Planned Holidays / Vacations:</label>
-        <DaysOff bind:scheduledDays={plannedHolidays} />
-    </section>
-
     <section>
         <label for="unplannedHolidays">Unplanned Days:</label>
         <DaysOff bind:scheduledDays={unplannedHolidays} />
@@ -63,7 +48,6 @@
         flex-direction: column;
         max-width: 400px;
         margin: 0 auto;
-        grid-row: 2;
     }
 
     label {

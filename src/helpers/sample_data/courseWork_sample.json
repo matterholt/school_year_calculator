@@ -1,0 +1,40 @@
+{
+    "coursework_sample": [
+        {
+            "student_id": 11,
+            "subject_id": 110,
+            "subject_matter": "math",
+            "lesson_per_wk": 4,
+            "number_of_lessons": 204,
+            "current_chapter": 0,
+            "status": "saved"
+        },
+        {
+            "student_id": 11,
+            "subject_id": 111,
+            "subject_matter": "reading",
+            "number_of_lessons": 150,
+            "lesson_per_wk": 4,
+            "current_chapter": 0,
+            "status": "saved"
+        },
+        {
+            "student_id": 12,
+            "subject_id": 120,
+            "subject_matter": "math",
+            "lesson_per_wk": 4,
+            "number_of_lessons": 300,
+            "current_chapter": 0,
+            "status": "saved"
+        },
+        {
+            "student_id": 12,
+            "subject_id": 121,
+            "subject_matter": "writing",
+            "number_of_lessons": 200,
+            "lesson_per_wk": 4,
+            "current_chapter": 0,
+            "status": "edit"
+        }
+    ]
+}
