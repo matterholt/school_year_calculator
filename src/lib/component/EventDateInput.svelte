@@ -1,20 +1,25 @@
 <!-- TodoApp.svelte -->
 <script>
-    export let scheduledDays
+    // export let scheduledDays
+    export let handleUpdateStore
 
-    let newTask = ''
+    let eventTitle = ''
     let vakStart = ''
     let vakEnd = ''
 
     let isMultiple = false
 
-    function addTask() {
-        if (newTask.trim() !== '') {
-            scheduledDays = [
-                ...scheduledDays,
-                { text: newTask, StartDate: vakStart, EndDate: vakEnd },
-            ]
-            newTask = ''
+    function addNoLessonDay() {
+        if (eventTitle.trim() !== '') {
+            // TODO calculate date how many days
+            let newDayOff = {
+                text: eventTitle,
+                StartDate: vakStart,
+                EndDate: vakEnd,
+            }
+
+            handleUpdateStore(newDayOff)
+            eventTitle = ''
             vakStart = ''
             vakEnd = ''
         }
@@ -25,7 +30,7 @@
     <input
         class="dateTitle"
         type="text"
-        bind:value={newTask}
+        bind:value={eventTitle}
         placeholder="Vacation"
     />
     <div class="dateSetters">
@@ -37,7 +42,7 @@
             {isMultiple ? 'One Day' : 'Multiple Days'}</button
         >
     </div>
-    <button class="actionButton" on:click={addTask}>Add</button>
+    <button class="actionButton" on:click={addNoLessonDay}>Add</button>
 </div>
 
 <style>

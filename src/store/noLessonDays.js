@@ -1,5 +1,5 @@
 
-import { writable } from 'svelte/store';
+import { writable, get } from 'svelte/store';
 
 
 const Initial = {
@@ -23,13 +23,18 @@ const Initial = {
     ]
 }
 function customStore() {
-    const { subscribe, set, update } = writable(Initial)
+    const lessonFreeDays = writable(Initial)
+    const { subscribe, set, update } = lessonFreeDays
 
     return {
         subscribe,
-        addPlannedDayOff: () => update((v) => {
-            console.log(v)
-        })
+
+        addLessonFreeDay: (dayOff, key) => {
+            const currentStoreState = get(lessonFreeDays)
+            let updateDay = [...currentStoreState?.[key], dayOff]
+            console.log(updateDay)
+            update((storeState) => { return { ...storeState, [key]: updateDay } })
+        },
 
     }
 

@@ -3,17 +3,16 @@
     import EventDateInput from '../component/EventDateInput.svelte'
 
     import { noLessonDays } from '../../store/noLessonDays.js'
-    const { scheduledDaysOff } = $noLessonDays
 
-    let plannedHolidays = scheduledDaysOff
-
-    scheduledDaysOff.addPlannedDayOff
+    function handleUpdateStore(newDayOff) {
+        noLessonDays.addLessonFreeDay(newDayOff, 'scheduledDaysOff')
+    }
 </script>
 
 <section>
     <label for="plannedHolidays">Planned Holidays / Vacations:</label>
-    <EventDateView scheduleEvent={plannedHolidays} />
-    <EventDateInput bind:scheduledDays={plannedHolidays} />
+    <EventDateView scheduleEvent={$noLessonDays.scheduledDaysOff} />
+    <EventDateInput {handleUpdateStore} />
 </section>
 
 <style>
