@@ -1,6 +1,5 @@
 <script>
     import { schooldaysperweek } from '../../store/schoolyear'
-    $: console.log($schooldaysperweek)
 
     import moment from 'moment'
     export let daysScheduledOff = 30

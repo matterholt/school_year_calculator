@@ -6,6 +6,8 @@
     const { scheduledDaysOff } = $noLessonDays
 
     let plannedHolidays = scheduledDaysOff
+
+    scheduledDaysOff.addPlannedDayOff
 </script>
 
 <section>

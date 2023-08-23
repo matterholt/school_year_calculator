@@ -11,7 +11,6 @@ function studentsStore() {
     return {
         subscribe,
         removeById: () => console.log('update by removing student'),
-        test: (newStudent) => console.log(`this guy ${newStudent}`),
         newEnrollment: (newStudent) => update((storeState) => [...storeState, { ...newStudent, student_id: uuidv4(), status: "enrolled" }]),
     }
 
