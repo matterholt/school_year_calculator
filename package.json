@@ -14,6 +14,7 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "dexie": "^4.0.1-alpha.25",
     "moment": "^2.29.4",
     "uuid": "^9.0.0"
   }

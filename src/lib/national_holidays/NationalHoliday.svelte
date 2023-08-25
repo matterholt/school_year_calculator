@@ -1,38 +1,30 @@
 <script>
-    import { holidays } from '../../helpers/us_national_holiday.json'
-    import { noLessonDays } from '../../store/noLessonDays.js'
-    const { nationalHoliday } = $noLessonDays
+    import { nationalHoliday } from '../../store/nationalHoliday'
 
-    // check the store for this list if no list then will need ot construct this format
-    let nationalHolidayList =
-        $noLessonDays.nationalHoliday.length !== 0 ? nationalHoliday : holidays
-
-    $: unselectedDays = nationalHolidayList
+    $: unselectedDays = $nationalHoliday
         .filter((holiday) => !holiday.isObserved)
         .sort((a, b) => a.id - b.id)
 
-    $: selectedDays = nationalHolidayList
+    $: selectedDays = $nationalHoliday
         .filter((holiday) => holiday.isObserved)
         .sort((a, b) => a.id - b.id)
 
-    function handle(selectedHoliday) {
-        let holiday = nationalHolidayList.find(
+    function handleStore(selectedHoliday, valueChangeKey) {
+        const getSelectedHoliday = $nationalHoliday.find(
             (x) => x.name === selectedHoliday
         )
-        let cleanHoliday = nationalHolidayList.filter(
-            (x) => x.name !== selectedHoliday
-        )
-        let updateNationHolidayList = [
-            ...cleanHoliday,
-            {
-                ...holiday,
-                isObserved: !holiday.isObserved,
-            },
-        ]
 
-        noLessonDays.updateNationalHoliday(updateNationHolidayList)
-        nationalHolidayList = updateNationHolidayList
+        const updateHolidayObserved = {
+            ...getSelectedHoliday,
+            isObserved:
+                valueChangeKey === 'isObserved'
+                    ? !getSelectedHoliday.isObserved
+                    : getSelectedHoliday.isObserved,
+        }
+
+        nationalHoliday.updateNationalHoliday(updateHolidayObserved)
     }
+
     $: numberOfDays = selectedDays.reduce((acc, crt) => acc + crt.dayValue, 0)
 </script>
 
@@ -43,7 +35,7 @@
             <div class="holiday">
                 <button
                     class="holiday_unselection"
-                    on:click={() => handle(holiday.name)}
+                    on:click={() => handleStore(holiday.name, 'isObserved')}
                 >
                     <p class="holiday_title">{holiday.name}</p>
                     <span class="sub">{holiday.date}</span>
@@ -52,12 +44,13 @@
         {/each}
     </section>
     <section>
-        <h2>Selected Holiday {numberOfDays}</h2>
+        <h2>Selected Holiday ---> {numberOfDays}</h2>
         {#each selectedDays as selectDay}
             <div class="holiday selected">
                 <button
                     class="holiday_selection"
-                    on:click={() => handle(selectDay.name)}>X</button
+                    on:click={() => handleStore(selectDay.name, 'isObserved')}
+                    >X</button
                 >
                 <p class="holiday_title">{selectDay.name}</p>
 
@@ -67,6 +60,7 @@
                         class="selectedInput"
                         id={selectDay.name + 'daysOff'}
                         bind:value={selectDay.dayValue}
+                        on:change={() => handleStore(selectDay.name)}
                         type="number"
                     />
                 </label>
