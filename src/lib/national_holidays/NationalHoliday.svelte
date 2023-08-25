@@ -5,7 +5,7 @@
 
     // check the store for this list if no list then will need ot construct this format
     let nationalHolidayList =
-        nationalHoliday.length !== 0 ? nationalHoliday : holidays
+        $noLessonDays.nationalHoliday.length !== 0 ? nationalHoliday : holidays
 
     $: unselectedDays = nationalHolidayList
         .filter((holiday) => !holiday.isObserved)
@@ -30,10 +30,7 @@
             },
         ]
 
-        noLessonDays.set({
-            ...$noLessonDays,
-            nationalHoliday: updateNationHolidayList,
-        })
+        noLessonDays.updateNationalHoliday(updateNationHolidayList)
         nationalHolidayList = updateNationHolidayList
     }
     $: numberOfDays = selectedDays.reduce((acc, crt) => acc + crt.dayValue, 0)

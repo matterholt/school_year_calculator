@@ -7,7 +7,8 @@
     function handleUpdateStore(newDayOff) {
         noLessonDays.addLessonFreeDay(newDayOff, 'unPlannedDaysOff')
     }
-    $: console.log($noLessonDays)
+
+    // TODO: quick add button when sick, and add total day count
 </script>
 
 <section>

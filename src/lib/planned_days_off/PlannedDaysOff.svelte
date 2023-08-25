@@ -7,6 +7,7 @@
     function handleUpdateStore(newDayOff) {
         noLessonDays.addLessonFreeDay(newDayOff, 'scheduledDaysOff')
     }
+    // TODO -> get total amount of days for the
 </script>
 
 <section>

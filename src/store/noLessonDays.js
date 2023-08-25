@@ -4,7 +4,6 @@ import { writable, get } from 'svelte/store';
 
 const Initial = {
     nationalHoliday: [
-        { text: 'swim in the ocean', StartDate: '01-01-01' },
 
         // all holidays with isObserved status
     ],
@@ -32,9 +31,13 @@ function customStore() {
         addLessonFreeDay: (dayOff, key) => {
             const currentStoreState = get(lessonFreeDays)
             let updateDay = [...currentStoreState?.[key], dayOff]
-            console.log(updateDay)
             update((storeState) => { return { ...storeState, [key]: updateDay } })
         },
+        updateNationalHoliday: (updateList) => {
+            update((currentState) => {
+                return { ...currentState, nationalHoliday: updateList }
+            })
+        }
 
     }
 
@@ -42,20 +45,3 @@ function customStore() {
 }
 
 export let noLessonDays = customStore()
-// noLessonDays.subscribe((value) => {
-//     console.log(value);
-// });
-
-
-// export function totalDaysOff() {
-
-//     const { nationalHoliday, scheduledDaysOff, unPlannedDaysOff } = store;
-//     const activeNationHolidays = nationalHoliday.filter(x => x.isObserved)
-//     const nationalHolidayDayCount = activeNationHolidays.reduce((acc, nationalDay) => nationalDay.dayValue + acc, 0)
-
-//     return nationalHolidayDayCount + scheduledDaysOff.length + unPlannedDaysOff.length
-// })
-
-
-// console.log("log it out", unSub)
-// }
