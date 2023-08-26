@@ -25,7 +25,7 @@
         nationalHoliday.updateNationalHoliday(updateHolidayObserved)
     }
 
-    $: numberOfDays = selectedDays.reduce((acc, crt) => acc + crt.dayValue, 0)
+    $: numberOfDays = selectedDays.reduce((acc, crt) => acc + crt.dayCount, 0)
 </script>
 
 <div class="national_holiday">
@@ -59,7 +59,7 @@
                     <input
                         class="selectedInput"
                         id={selectDay.name + 'daysOff'}
-                        bind:value={selectDay.dayValue}
+                        bind:value={selectDay.dayCount}
                         on:change={() => handleStore(selectDay.name)}
                         type="number"
                     />

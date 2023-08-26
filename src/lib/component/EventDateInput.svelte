@@ -2,10 +2,12 @@
 <script>
     // export let scheduledDays
     export let handleUpdateStore
+    import { dayRangeCal } from '../../helpers/date_manipulations/'
 
     let eventTitle = ''
     let vakStart = ''
     let vakEnd = ''
+    $: numberOfSchoolDays = dayRangeCal(vakStart, vakEnd)
 
     let isMultiple = false
 
@@ -16,6 +18,7 @@
                 text: eventTitle,
                 StartDate: vakStart,
                 EndDate: vakEnd,
+                dayCount: numberOfSchoolDays,
             }
 
             handleUpdateStore(newDayOff)
@@ -41,6 +44,9 @@
         <button on:click={() => (isMultiple = !isMultiple)}>
             {isMultiple ? 'One Day' : 'Multiple Days'}</button
         >
+        {#if vakStart}
+            <p>number of days <span>{numberOfSchoolDays}</span></p>
+        {/if}
     </div>
     <button class="actionButton" on:click={addNoLessonDay}>Add</button>
 </div>

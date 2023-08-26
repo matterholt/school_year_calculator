@@ -7,7 +7,6 @@
     $: if (showModal === 'outSideClosed') handleModal()
 
     function handleModal() {
-        console.log('update')
         showModal = 'closed'
         dialog.close()
     }

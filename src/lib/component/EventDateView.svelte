@@ -13,6 +13,7 @@
                 {task.text}---> {task.StartDate}
                 {task.EndDate ? `to ${task.EndDate}` : ''}</span
             >
+            <p>Day Count: {task.dayCount}</p>
             <button on:click={() => deleteTask(index)}>Delete</button>
         </li>
     {/each}

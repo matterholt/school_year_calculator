@@ -18,7 +18,6 @@
             subject_id: courseWork.length + 1,
             status,
         }
-        console.log(newCourse)
         courseWork = [...courseWork, NewCouseItem]
     }
 

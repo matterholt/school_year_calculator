@@ -4,70 +4,70 @@
             "id": 1,
             "name": "New Year's Day",
             "date": "January 1",
-            "dayValue": 1,
+            "dayCount": 1,
             "isObserved": true
         },
         {
             "id": 2,
             "name": "Martin Luther King Jr. Day",
             "date": "Third Monday in January",
-            "dayValue": 1,
+            "dayCount": 1,
             "isObserved": false
         },
         {
             "id": 3,
             "name": "Presidents' Day",
             "date": "Third Monday in February",
-            "dayValue": 1,
+            "dayCount": 1,
             "isObserved": false
         },
         {
             "id": 4,
             "name": "Memorial Day",
             "date": "Last Monday in May",
-            "dayValue": 1,
+            "dayCount": 1,
             "isObserved": false
         },
         {
             "id": 5,
             "name": "Independence Day",
             "date": "July 4",
-            "dayValue": 1,
+            "dayCount": 1,
             "isObserved": false
         },
         {
             "id": 6,
             "name": "Labor Day",
             "date": "First Monday in September",
-            "dayValue": 1,
+            "dayCount": 1,
             "isObserved": false
         },
         {
             "id": 7,
             "name": "Columbus Day",
             "date": "Second Monday in October",
-            "dayValue": 1,
+            "dayCount": 1,
             "isObserved": false
         },
         {
             "id": 8,
             "name": "Veterans Day",
             "date": "November 11",
-            "dayValue": 1,
+            "dayCount": 1,
             "isObserved": false
         },
         {
             "id": 9,
             "name": "Thanksgiving Day",
             "date": "Fourth Thursday in November",
-            "dayValue": 2,
+            "dayCount": 2,
             "isObserved": false
         },
         {
             "id": 10,
             "name": "Christmas Day",
             "date": "December 25",
-            "dayValue": 15,
+            "dayCount": 15,
             "isObserved": false
         }
     ]
