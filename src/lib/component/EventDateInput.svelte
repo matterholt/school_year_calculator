@@ -4,8 +4,8 @@
     export let handleUpdateStore
     import { dayRangeCal } from '../../helpers/date_manipulations/'
 
-    let eventTitle = 'got to get it'
-    let vakStart = '2023-08-30'
+    let eventTitle = ''
+    let vakStart = ''
     let vakEnd = ''
     $: numberOfSchoolDays = dayRangeCal(vakStart, vakEnd)
 

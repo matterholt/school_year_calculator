@@ -1,6 +1,6 @@
 
 import { writable, get } from 'svelte/store';
-import { updateStore, addBaseHoliday } from "../local_storage/saveIndexedDb"
+import { updateStore, addBaseHoliday, resetStore } from "../local_storage/saveIndexedDb"
 import { holidays } from '../helpers/us_national_holiday.json'
 
 
@@ -13,7 +13,11 @@ function customStore() {
     const schoolYearHolidays = writable(Initial)
     const { subscribe, set, update } = schoolYearHolidays
 
-    addBaseHoliday(Initial)
+    addBaseHoliday(Initial).then(
+        (data) => {
+            schoolYearHolidays.set(data)
+        }
+    )
 
     return {
         subscribe,
@@ -25,7 +29,12 @@ function customStore() {
                 )
                 return [...nationalHolidayRemoveSelect, updateList]
             })
+        },
+        resetToInitial: () => {
+            resetStore('national_holidays')
+            schoolYearHolidays.set(Initial)
         }
+
 
     }
 
