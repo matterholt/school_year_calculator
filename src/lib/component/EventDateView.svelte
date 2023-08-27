@@ -9,12 +9,19 @@
 <ul>
     {#each scheduleEvent as task, index}
         <li>
-            <span>
-                {task.text}---> {task.StartDate}
-                {task.EndDate ? `to ${task.EndDate}` : ''}</span
-            >
+            <p>
+                {task.text}---> <br />{task.StartDate}
+                {task.EndDate ? `to ${task.EndDate}` : ''}
+            </p>
             <p>Day Count: {task.dayCount}</p>
             <button on:click={() => deleteTask(index)}>Delete</button>
         </li>
     {/each}
 </ul>
+
+<style>
+    li {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>

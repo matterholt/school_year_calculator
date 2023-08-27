@@ -13,7 +13,7 @@
 <section>
     <label for="plannedHolidays">Planned Holidays / Vacations:</label>
     <EventDateView scheduleEvent={$noLessonDays.scheduledDaysOff} />
-    <EventDateInput {handleUpdateStore} />
+    <EventDateInput {handleUpdateStore} sectionType="scheduledDaysOff" />
 </section>
 
 <style>

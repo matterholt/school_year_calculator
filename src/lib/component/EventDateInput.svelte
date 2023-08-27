@@ -1,8 +1,9 @@
 <!-- TodoApp.svelte -->
 <script>
-    // export let scheduledDays
-    export let handleUpdateStore
     import { dayRangeCal } from '../../helpers/date_manipulations/'
+
+    export let handleUpdateStore
+    export let sectionType = ''
 
     let eventTitle = ''
     let vakStart = ''
@@ -19,6 +20,7 @@
                 StartDate: vakStart,
                 EndDate: vakEnd,
                 dayCount: numberOfSchoolDays,
+                typeOf: sectionType,
             }
 
             handleUpdateStore(newDayOff)

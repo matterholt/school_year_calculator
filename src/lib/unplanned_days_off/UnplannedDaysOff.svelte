@@ -14,7 +14,7 @@
 <section>
     <label for="unplannedHolidays">Unplanned Days/ Sick:</label>
     <EventDateView scheduleEvent={$noLessonDays.unPlannedDaysOff} />
-    <EventDateInput {handleUpdateStore} />
+    <EventDateInput {handleUpdateStore} sectionType="unPlannedDaysOff" />
 </section>
 
 <style>
