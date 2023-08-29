@@ -1,5 +1,7 @@
 import dayRangeCal from "./dayRangeCal"
+import { addSomeDays } from "./dayAddSub"
+import { thisCurrentDay, definedWeekValue } from "./dateGetIt"
 
 export {
-    dayRangeCal
+    dayRangeCal, addSomeDays, thisCurrentDay, definedWeekValue
 }

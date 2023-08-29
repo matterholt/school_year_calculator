@@ -1,7 +1,7 @@
 
 import { writable, get } from 'svelte/store';
 import { updateStore, addBaseHoliday, resetStore } from "../local_storage/saveIndexedDb"
-import { holidays } from '../helpers/us_national_holiday.json'
+import { holidays } from '../helpers/us_national_holiday.json'assert { type: "json" };
 
 
 
