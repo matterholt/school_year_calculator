@@ -26,6 +26,21 @@ async function addBaseHoliday(initialState) {
 
 }
 
+
+async function getNoLessonsDays() {
+    const scheduledDaysOff = await db.scheduled_days_off.filter(day => day.typeOf === "scheduledDaysOff").toArray()
+    const unPlannedDaysOff = await db.scheduled_days_off.filter(day => day.typeOf === "unPlannedDaysOff").toArray()
+
+
+    return {
+        scheduledDaysOff,
+        unPlannedDaysOff
+    }
+}
+
+
+
+
 /**
  * update the value in the indexedDB for the table national holidays
  * @param {string} db_store 
@@ -57,8 +72,19 @@ async function resetStore(db_store, store_data) {
  */
 async function updateStoreDaysOff(db_store, store_data) {
     db[db_store].add(store_data)
-    console.log(store_data)
+}
 
+/**
+ * Removes entry from the data base
+ * Promise that return undefined, no matter what
+ * https://dexie.org/docs/Table/Table.delete()
+ * 
+ * @param {number} eventDayId 
+ * @returns 
+ */
+async function removeDateFromNoLessons(eventDayId) {
+    let dayRemove = db['scheduled_days_off'].delete(eventDayId)
+    return dayRemove === 'undefined' ? eventDayId : "FAILED"
 
 }
 
@@ -66,5 +92,4 @@ async function updateStoreDaysOff(db_store, store_data) {
 
 
 
-
-export { updateStore, resetStore, addBaseHoliday, updateStoreDaysOff }
+export { removeDateFromNoLessons, updateStore, resetStore, addBaseHoliday, updateStoreDaysOff, getNoLessonsDays }

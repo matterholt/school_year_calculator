@@ -1,6 +1,6 @@
 
 import { writable, get } from 'svelte/store';
-import { updateStoreDaysOff } from "../local_storage/saveIndexedDb"
+import { updateStoreDaysOff, getNoLessonsDays, removeDateFromNoLessons } from "../local_storage/saveIndexedDb"
 
 
 // TODO :  check if there is a data in the data base
@@ -15,6 +15,14 @@ const Initial = {
 function customStore() {
     const lessonFreeDays = writable(Initial)
     const { subscribe, set, update } = lessonFreeDays
+
+
+    getNoLessonsDays().then(
+        (data) => lessonFreeDays.set(data)
+    ).catch((error) => {
+        console.error(error);
+    });
+
     return {
         subscribe,
         addLessonFreeDay: (dayOff, key) => {
@@ -29,8 +37,22 @@ function customStore() {
         updateLessonFreeDay: () => {
             console.log("update data")
         },
-        RemoveLessonFreeDay: () => {
-            console.log("Remove data")
+        removeLessonFreeDay: async (eventDay) => {
+            const { typeOf, id } = eventDay
+            let deleteDay = await removeDateFromNoLessons(id)
+            if (deleteDay !== id) {
+                console.error('wrong type passed in params');
+            }
+
+            // remove the event from the store
+            const currentStoreState = get(lessonFreeDays)
+            const newStore = { [typeOf]: currentStoreState[typeOf].filter(x => x.id !== id) }
+
+            console.log({ ...currentStoreState, ...newStore })
+            update((storeState) => { return { ...storeState, ...newStore } })
+
+
+
         }
 
     }
