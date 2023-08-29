@@ -1,13 +1,17 @@
 <!-- TodoApp.svelte -->
 <script>
-    import { dayRangeCal } from '../../helpers/date_manipulations/'
+    import {
+        dayRangeCal,
+        addSomeDays,
+        thisCurrentDay,
+    } from '../../helpers/date_manipulations/'
 
     export let handleUpdateStore
     export let sectionType = ''
 
     let eventTitle = ''
-    let vakStart = ''
-    let vakEnd = ''
+    let vakStart = thisCurrentDay()
+    $: vakEnd = isMultiple ? addSomeDays(vakStart, 1) : ''
     $: numberOfSchoolDays = dayRangeCal(vakStart, vakEnd)
 
     let isMultiple = false
@@ -44,7 +48,7 @@
             <input type="date" id="vakStart" bind:value={vakEnd} />
         {/if}
         <button on:click={() => (isMultiple = !isMultiple)}>
-            {isMultiple ? 'One Day' : 'Multiple Days'}</button
+            {isMultiple ? 'One Day' : 'End Date'}</button
         >
         {#if vakStart}
             <p>number of days <span>{numberOfSchoolDays}</span></p>
