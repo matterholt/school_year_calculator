@@ -1,5 +1,6 @@
 <script>
     import { nationalHoliday } from '../../store/nationalHoliday'
+    import { numberOfDays } from '../../helpers/date_manipulations'
 
     $: unselectedDays = $nationalHoliday
         .filter((holiday) => !holiday.isObserved)
@@ -25,7 +26,7 @@
         nationalHoliday.updateNationalHoliday(updateHolidayObserved)
     }
 
-    $: numberOfDays = selectedDays.reduce((acc, crt) => acc + crt.dayCount, 0)
+    $: totalNationalDayCount = numberOfDays(selectedDays)
 </script>
 
 <div class="national_holiday">
@@ -44,7 +45,7 @@
         {/each}
     </section>
     <section>
-        <h2>Selected Holiday ---> {numberOfDays}</h2>
+        <h2>Selected Holiday ---> {totalNationalDayCount}</h2>
         <button on:click={() => nationalHoliday.resetToInitial()}>CLEAR</button>
         {#each selectedDays as selectDay}
             <div class="holiday selected">

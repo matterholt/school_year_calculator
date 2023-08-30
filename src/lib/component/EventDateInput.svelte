@@ -31,6 +31,7 @@
             eventTitle = ''
             vakStart = ''
             vakEnd = ''
+            isMultiple = false
         }
     }
 </script>
