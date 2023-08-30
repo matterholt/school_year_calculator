@@ -1,10 +1,15 @@
 <script>
     import { schooldaysperweek } from '../../store/schoolyear'
 
-    import moment from 'moment'
+    import {
+        dayBetweenDates,
+        addemWeeksUp,
+        formatDate,
+    } from '../../helpers/date_manipulations/'
+
     export let daysScheduledOff = 30
 
-    let startDate = moment('2023-09-05').format('YYYY-MM-DD')
+    let startDate = formatDate('2023-09-05')
 
     $: daysPerWeek = $schooldaysperweek
     let longestLesson = 120
@@ -20,15 +25,11 @@
     $: estimatedWeeks = weeksNeedForCourse + weekScheduledOff
     $: tradEstimatedWeek = weekScheduledOff + 36
 
-    $: courseBaseEndDate = moment(startDate)
-        .add(estimatedWeeks, 'weeks')
-        .format('MM-DD-YYYY')
+    $: courseBaseEndDate = addemWeeksUp(startDate, estimatedWeeks)
 
-    $: tradEndDate = moment(startDate)
-        .add(tradEstimatedWeek, 'weeks')
-        .format('MM-DD-YYYY')
+    $: tradEndDate = addemWeeksUp(startDate, tradEstimatedWeek)
 
-    $: diffOfDays = moment(tradEndDate).diff(courseBaseEndDate, 'days')
+    $: diffOfDays = dayBetweenDates(tradEndDate, courseBaseEndDate)
 </script>
 
 <section class="schedule_column">

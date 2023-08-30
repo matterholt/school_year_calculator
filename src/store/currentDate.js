@@ -1,6 +1,5 @@
 import { writable } from 'svelte/store';
-import moment from 'moment'
+import { formatDate } from "../helpers/date_manipulations"
 
-const currentDate = moment("09-05-2023").format('MM-DD-YYYY')
-
+const currentDate = formatDate()
 export const dateOnRefreshed = writable(currentDate);

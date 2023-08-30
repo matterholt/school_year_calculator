@@ -4,8 +4,8 @@ const { inputFormat } = settings
 import moment from 'moment';
 
 
-function thisCurrentDay() {
-    return moment().format(inputFormat)
+function formatDate(date) {
+    return moment(date || null).format(inputFormat)
 }
 
 function definedWeekValue(date) {
@@ -14,4 +14,4 @@ function definedWeekValue(date) {
 
 
 
-export { thisCurrentDay, definedWeekValue }
+export { formatDate, definedWeekValue }

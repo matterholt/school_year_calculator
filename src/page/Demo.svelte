@@ -1,8 +1,5 @@
 <script context="module">
-    import {
-        thisCurrentDay,
-        definedWeekValue,
-    } from '../helpers/date_manipulations'
+    import { formatDate, definedWeekValue } from '../helpers/date_manipulations'
     export let dayPlanedOff = []
     export let studentCourseWork = []
     export let schoolYearSettings = {}
@@ -14,7 +11,7 @@
         countValue = value
     })
 
-    const currentDate = thisCurrentDay()
+    const currentDate = formatDate()
     const weekNumberOfStart = definedWeekValue(countValue)
     const currentWeekOfSchool =
         definedWeekValue('10-05-2023') - weekNumberOfStart

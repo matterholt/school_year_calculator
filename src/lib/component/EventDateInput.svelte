@@ -3,14 +3,14 @@
     import {
         dayRangeCal,
         addSomeDays,
-        thisCurrentDay,
+        formatDate,
     } from '../../helpers/date_manipulations/'
 
     export let handleUpdateStore
     export let sectionType = ''
 
     let eventTitle = ''
-    let vakStart = thisCurrentDay()
+    let vakStart = formatDate()
     $: vakEnd = isMultiple ? addSomeDays(vakStart, 1) : ''
     $: numberOfSchoolDays = dayRangeCal(vakStart, vakEnd)
 
