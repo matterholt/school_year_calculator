@@ -1,5 +1,6 @@
 
 import { writable, get } from 'svelte/store';
+import { numberOfDays } from "../helpers/date_manipulations"
 import { updateStoreDaysOff, getNoLessonsDays, removeDateFromNoLessons } from "../local_storage/saveIndexedDb"
 
 
@@ -29,10 +30,11 @@ function customStore() {
             const currentStoreState = get(lessonFreeDays)
             let updateDay = [...currentStoreState?.[key], dayOff]
 
-
+            update((storeState) => {
+                return { ...storeState, [key]: updateDay }
+            })
             updateStoreDaysOff('scheduled_days_off', dayOff)
 
-            update((storeState) => { return { ...storeState, [key]: updateDay } })
         },
         updateLessonFreeDay: () => {
             console.log("update data")
@@ -47,12 +49,14 @@ function customStore() {
             // remove the event from the store
             const currentStoreState = get(lessonFreeDays)
             const newStore = { [typeOf]: currentStoreState[typeOf].filter(x => x.id !== id) }
-
-            console.log({ ...currentStoreState, ...newStore })
             update((storeState) => { return { ...storeState, ...newStore } })
 
 
 
+        },
+        totalCount: async () => {
+            const currentStoreState = get(lessonFreeDays)
+            return currentStoreState
         }
 
     }

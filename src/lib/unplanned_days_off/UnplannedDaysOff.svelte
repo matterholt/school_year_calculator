@@ -1,6 +1,7 @@
 <script>
     import EventDateView from '../component/EventDateView.svelte'
     import EventDateInput from '../component/EventDateInput.svelte'
+    import { numberOfDays } from '../../helpers/date_manipulations'
 
     import { noLessonDays } from '../../store/noLessonDays.js'
 
@@ -8,11 +9,11 @@
         noLessonDays.addLessonFreeDay(newDayOff, 'unPlannedDaysOff')
     }
 
-    // TODO: quick add button when sick, and add total day count
+    $: totalDayCount = numberOfDays($noLessonDays.unPlannedDaysOff)
 </script>
 
 <section>
-    <label for="unplannedHolidays">Unplanned Days/ Sick:</label>
+    <label for="unplannedHolidays">Unplanned Days/ Sick: {totalDayCount}</label>
     <EventDateView scheduleEvent={$noLessonDays.unPlannedDaysOff} />
     <EventDateInput {handleUpdateStore} sectionType="unPlannedDaysOff" />
 </section>

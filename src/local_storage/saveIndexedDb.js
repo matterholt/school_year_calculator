@@ -39,8 +39,6 @@ async function getNoLessonsDays() {
 }
 
 
-
-
 /**
  * update the value in the indexedDB for the table national holidays
  * @param {string} db_store 
