@@ -1,13 +1,18 @@
 <script>
     import { schooldaysperweek } from '../../store/schoolyear'
+    import { noLessonDays } from '../../store/noLessonDays'
+    import { nationalHoliday } from '../../store/nationalHoliday'
 
     import {
         dayBetweenDates,
         addemWeeksUp,
+        numberOfDays,
         formatDate,
     } from '../../helpers/date_manipulations/'
+    const personalHoliday = Object.values($noLessonDays).flat()
+    const value = [personalHoliday, $nationalHoliday].flat()
 
-    export let daysScheduledOff = 30
+    export let daysScheduledOff = 30 // collect all stores, and get the day count
 
     let startDate = formatDate('2023-09-05')
 
@@ -45,7 +50,7 @@
                 max="7"
             />
         </p>
-        <p>Days Off : {daysScheduledOff}</p>
+        <p>Days Off : {numberOfDays(value)}</p>
     </div>
     <div class="schedule_row">
         <p />

@@ -1,8 +1,5 @@
 <script context="module">
     import { formatDate, definedWeekValue } from '../helpers/date_manipulations'
-    export let dayPlanedOff = []
-    export let studentCourseWork = []
-    export let schoolYearSettings = {}
     import { dateOnRefreshed } from '../store/currentDate.js'
 
     let countValue
@@ -21,15 +18,9 @@
     import StudentCourses from '../lib/student_courses/StudentCourses.svelte'
     import Tabs from '../lib/component/Tabs.svelte'
     import TimeDateSetter from '../lib/time_date_setter/TimeDateSetter.svelte'
-    import StudentCourseCard from '../lib/Student_course_card/StudentCourseCard.svelte'
     import NationalHoliday from '../lib/national_holidays/NationalHoliday.svelte'
     import PlannedDaysOff from '../lib/planned_days_off/PlannedDaysOff.svelte'
     import UnplannedDaysOff from '../lib/unplanned_days_off/UnplannedDaysOff.svelte'
-
-    import Modal from '../lib/component/Modal.svelte'
-    let showModal = 'closed'
-
-    let daysScheduledOff = 30
 
     let sections = [
         { label: 'Student', value: 1, component: StudentCourses },
@@ -45,14 +36,9 @@
         <p>Week of school: {currentWeekOfSchool}</p>
     </div>
     <div class="timeDateSetter">
-        <TimeDateSetter {daysScheduledOff} />
+        <TimeDateSetter />
     </div>
-    <div class="actions">
-        <button on:click={() => (showModal = 'open')}> Add Student </button>
-        <Modal bind:showModal>
-            <StudentCourseCard bind:showModal />
-        </Modal>
-    </div>
+
     <div class="data">
         <Tabs items={sections} />
     </div>

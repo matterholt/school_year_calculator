@@ -5,7 +5,12 @@ import moment from 'moment';
 
 
 function formatDate(date) {
-    return moment(date || null).format(inputFormat)
+    if (date) {
+        return moment(date).format(inputFormat)
+    }
+
+    return moment(date).format(inputFormat)
+
 }
 
 function definedWeekValue(date) {

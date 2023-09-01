@@ -5,6 +5,11 @@
     import { coursework_sample } from '../../helpers/sample_data/courseWork_sample.json'
     import { enrolledStudents } from '../../store/enrolledStudents.js'
 
+    import StudentCourseCard from '../../lib/Student_course_card/StudentCourseCard.svelte'
+
+    import Modal from '../../lib/component/Modal.svelte'
+    let showModal = 'closed'
+
     let students
 
     const unsubscribe = enrolledStudents.subscribe((value) => {
@@ -56,6 +61,12 @@
 </script>
 
 <ul>
+    <div class="actions">
+        <button on:click={() => (showModal = 'open')}> Add Student </button>
+        <Modal bind:showModal>
+            <StudentCourseCard bind:showModal />
+        </Modal>
+    </div>
     {#each students as pupil, index}
         <StudentSection
             {pupil}
