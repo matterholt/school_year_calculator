@@ -46,7 +46,6 @@
     </section>
     <section>
         <h2>Selected Holiday ---> {totalNationalDayCount}</h2>
-        <button on:click={() => nationalHoliday.resetToInitial()}>CLEAR</button>
         {#each selectedDays as selectDay}
             <div class="holiday selected">
                 <button
@@ -68,6 +67,7 @@
                 </label>
             </div>
         {/each}
+        <button on:click={() => nationalHoliday.resetToInitial()}>CLEAR</button>
     </section>
 </div>
 
