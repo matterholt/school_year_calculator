@@ -21,6 +21,7 @@
     import NationalHoliday from '../lib/national_holidays/NationalHoliday.svelte'
     import PlannedDaysOff from '../lib/planned_days_off/PlannedDaysOff.svelte'
     import UnplannedDaysOff from '../lib/unplanned_days_off/UnplannedDaysOff.svelte'
+    import Header from '../lib/header/Header.svelte'
 
     let sections = [
         { label: 'Student', value: 1, component: StudentCourses },
@@ -36,7 +37,9 @@
         <p>Week of school: {currentWeekOfSchool}</p>
     </div>
     <div class="timeDateSetter">
-        <TimeDateSetter />
+        <Header>
+            <TimeDateSetter />
+        </Header>
     </div>
 
     <div class="data">
