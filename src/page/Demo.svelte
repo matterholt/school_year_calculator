@@ -17,17 +17,19 @@
 <script>
     import StudentCourses from '../lib/student_courses/StudentCourses.svelte'
     import Tabs from '../lib/component/Tabs.svelte'
-    import TimeDateSetter from '../lib/time_date_setter/TimeDateSetter.svelte'
     import NationalHoliday from '../lib/national_holidays/NationalHoliday.svelte'
     import PlannedDaysOff from '../lib/planned_days_off/PlannedDaysOff.svelte'
     import UnplannedDaysOff from '../lib/unplanned_days_off/UnplannedDaysOff.svelte'
-    import Header from '../lib/header/Header.svelte'
+    import Summary from '../lib/summary/Summary.svelte'
+    import YearlyScheduler from '../lib/yearly_scheduler/YearlyScheduler.svelte'
 
     let sections = [
+        { label: 'Summary', value: 0, component: Summary },
         { label: 'Student', value: 1, component: StudentCourses },
         { label: 'Planned Days Off', value: 2, component: PlannedDaysOff },
         { label: 'Unplanned Days Off', value: 3, component: UnplannedDaysOff },
         { label: 'National Holiday', value: 4, component: NationalHoliday },
+        { label: 'Year Scheduler', value: 5, component: YearlyScheduler },
     ]
 </script>
 
@@ -35,11 +37,6 @@
     <div class="header">
         <p>Date: {currentDate}</p>
         <p>Week of school: {currentWeekOfSchool}</p>
-    </div>
-    <div class="timeDateSetter">
-        <Header>
-            <TimeDateSetter />
-        </Header>
     </div>
 
     <div class="data">

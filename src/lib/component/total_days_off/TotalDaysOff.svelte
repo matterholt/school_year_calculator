@@ -13,6 +13,4 @@
 <p>Days Off : {totalTallyOfDaysOff}</p>
 
 <style>
-    p {
-    }
 </style>
