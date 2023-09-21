@@ -1,6 +1,6 @@
 <script>
-    import { nationalHoliday } from '../../store/nationalHoliday'
-    import { numberOfDays } from '../../helpers/date_manipulations'
+    import { nationalHoliday } from '../../../../store/nationalHoliday'
+    import { numberOfDays } from '../../../../helpers/date_manipulations'
 
     $: unselectedDays = $nationalHoliday
         .filter((holiday) => !holiday.isObserved)
