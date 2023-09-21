@@ -1,6 +1,8 @@
 <script>
-    import { nationalHoliday } from '../../../../store/nationalHoliday'
-    import { numberOfDays } from '../../../../helpers/date_manipulations'
+    import { Button } from '../component'
+
+    import { nationalHoliday } from '../../../store/nationalHoliday'
+    import { numberOfDays } from '../../../helpers/date_manipulations'
 
     $: unselectedDays = $nationalHoliday
         .filter((holiday) => !holiday.isObserved)
@@ -34,13 +36,13 @@
         <h2>Available Holiday</h2>
         {#each unselectedDays as holiday, index}
             <div class="holiday">
-                <button
+                <Button
                     class="holiday_unselection"
-                    on:click={() => handleStore(holiday.name, 'isObserved')}
+                    buttonAction={() => handleStore(holiday.name, 'isObserved')}
                 >
                     <p class="holiday_title">{holiday.name}</p>
                     <span class="sub">{holiday.date}</span>
-                </button>
+                </Button>
             </div>
         {/each}
     </section>
@@ -48,10 +50,10 @@
         <h2>Selected Holiday ---> {totalNationalDayCount}</h2>
         {#each selectedDays as selectDay}
             <div class="holiday selected">
-                <button
+                <Button
                     class="holiday_selection"
-                    on:click={() => handleStore(selectDay.name, 'isObserved')}
-                    >X</button
+                    buttonAction={() =>
+                        handleStore(selectDay.name, 'isObserved')}>X</Button
                 >
                 <p class="holiday_title">{selectDay.name}</p>
 
@@ -67,7 +69,9 @@
                 </label>
             </div>
         {/each}
-        <button on:click={() => nationalHoliday.resetToInitial()}>CLEAR</button>
+        <Button buttonAction={() => nationalHoliday.resetToInitial()}
+            >CLEAR</Button
+        >
     </section>
 </div>
 
@@ -106,8 +110,7 @@
         display: flex;
         flex-direction: column;
     }
-    button {
-        height: 100%;
+    :global(.holiday_unselection) {
         width: 100%;
     }
     input {

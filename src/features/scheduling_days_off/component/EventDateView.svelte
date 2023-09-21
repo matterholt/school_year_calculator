@@ -1,6 +1,8 @@
 <script>
+    import { Button } from '../component'
+    import { noLessonDays } from '../../../store/noLessonDays.js'
+
     export let scheduleEvent = []
-    import { noLessonDays } from '../../store/noLessonDays.js'
 
     function deleteTask(index) {
         // scheduleEvent = scheduleEvent.filter((_, i) => i !== index)
@@ -16,7 +18,9 @@
                 {task.EndDate ? `to ${task.EndDate}` : ''}
             </p>
             <p>Day Count: {task.dayCount}</p>
-            <button on:click={() => deleteTask(task)}>Delete</button>
+            <Button class="actionButton" buttonAction={() => deleteTask(task)}
+                >Delete</Button
+            >
         </li>
     {/each}
 </ul>

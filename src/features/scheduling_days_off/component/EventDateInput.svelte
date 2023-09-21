@@ -4,7 +4,8 @@
         dayRangeCal,
         addSomeDays,
         formatDate,
-    } from '../../helpers/date_manipulations/'
+    } from '../../../helpers/date_manipulations/'
+    import { Button } from '../component'
 
     export let handleUpdateStore
     export let sectionType = ''
@@ -48,14 +49,17 @@
         {#if isMultiple}
             <input type="date" id="vakStart" bind:value={vakEnd} />
         {/if}
-        <button on:click={() => (isMultiple = !isMultiple)}>
-            {isMultiple ? 'One Day' : 'End Date'}</button
+        <Button
+            class="actionButton"
+            buttonAction={() => (isMultiple = !isMultiple)}
+            >{isMultiple ? 'One Day' : 'End Date'}</Button
         >
+
         {#if vakStart}
             <p>number of days <span>{numberOfSchoolDays}</span></p>
         {/if}
     </div>
-    <button class="actionButton" on:click={addNoLessonDay}>Add</button>
+    <Button class="actionButton" buttonAction={addNoLessonDay}>Add</Button>
 </div>
 
 <style>
@@ -82,11 +86,7 @@
     .dateSetters {
         grid-area: dateSetters;
     }
-    .actionButton {
+    :global(.actionButton) {
         grid-area: actionButton;
-    }
-    button {
-        padding: 5px 10px;
-        margin-left: 10px;
     }
 </style>
