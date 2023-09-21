@@ -1,18 +1,22 @@
 <script>
-    import { schooldaysperweek } from '../../store/schoolyear'
+    import { schooldaysperweek } from '../../../../store/schoolyear'
+    // TODO
+    // Think about what data should be set here,
+    // 1. projected end date
+    // 2. student projected lesson
+    //
 
     import {
-        dayBetweenDates,
         addemWeeksUp,
         numberOfDays,
         formatDate,
-    } from '../../helpers/date_manipulations/'
+    } from '../../../../helpers/date_manipulations'
 
     export let daysScheduledOff = 30 // collect all stores, and get the day count
 
     let startDate = formatDate('2023-09-05')
 
-    $: daysPerWeek = $schooldaysperweek
+    $: daysPerWeek = 122
     let longestLesson = 120
 
     $: weeksNeedForCourse = longestLesson / daysPerWeek

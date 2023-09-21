@@ -1,7 +1,7 @@
 <script>
-    import { noLessonDays } from '../../../store/noLessonDays'
-    import { nationalHoliday } from '../../../store/nationalHoliday'
-    import { numberOfDays } from '../../../helpers/date_manipulations'
+    import { noLessonDays } from '../../../../store/noLessonDays'
+    import { nationalHoliday } from '../../../../store/nationalHoliday'
+    import { numberOfDays } from '../../../../helpers/date_manipulations'
 
     $: daysOffList = [
         Object.values($noLessonDays).flat(),

@@ -1,11 +1,19 @@
 <script>
-    import TotalDaysOff from '../component/total_days_off/TotalDaysOff.svelte'
+    import { TotalDaysOff } from './component'
 
     import { schooldaysperweek } from '../../store/schoolyear'
 
-    import { formatDate } from '../../helpers/date_manipulations/'
+    import { formatDate } from '../../helpers/date_manipulations'
 
     let startDate = formatDate('2023-09-05')
+
+    // TODO:
+    /**
+     * grab all the days off,
+     * national,planned, unplanned
+     *
+     * then take the days whis to
+     */
     let enddingDate = formatDate('2023-09-05')
 
     $: daysPerWeek = $schooldaysperweek
