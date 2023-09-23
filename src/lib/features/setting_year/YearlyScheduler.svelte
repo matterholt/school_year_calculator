@@ -3,7 +3,7 @@
 
     import { schooldaysperweek } from '../../../store/schoolyear'
 
-    import { formatDate } from '../../helpers/date_manipulations'
+    import { formatDate } from '../../../helpers/date_manipulations'
 
     let startDate = formatDate('2023-09-05')
 

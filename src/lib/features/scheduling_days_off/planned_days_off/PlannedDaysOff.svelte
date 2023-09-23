@@ -1,8 +1,8 @@
 <script>
-    import {EventDateView, EventDateInput} from '../component'
-    import { numberOfDays } from '../../../helpers/date_manipulations'
+    import { EventDateView, EventDateInput } from '../component'
+    import { numberOfDays } from '../../../../helpers/date_manipulations'
 
-    import { noLessonDays } from '../../../store/noLessonDays.js'
+    import { noLessonDays } from '../../../../store/noLessonDays.js'
 
     function handleUpdateStore(newDayOff) {
         noLessonDays.addLessonFreeDay(newDayOff, 'scheduledDaysOff')

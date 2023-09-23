@@ -4,8 +4,8 @@
         dayRangeCal,
         addSomeDays,
         formatDate,
-    } from '../../../helpers/date_manipulations/'
-    import { Button } from '../component'
+    } from '../../../../helpers/date_manipulations/'
+    import { Button } from '../../../global_components/'
 
     export let handleUpdateStore
     export let sectionType = ''

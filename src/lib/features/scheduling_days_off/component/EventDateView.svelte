@@ -1,6 +1,6 @@
 <script>
-    import { Button } from '../component'
-    import { noLessonDays } from '../../../store/noLessonDays.js'
+    import { Button } from '../../../global_components/'
+    import { noLessonDays } from '../../../../store/noLessonDays.js'
 
     export let scheduleEvent = []
 
