@@ -21,9 +21,9 @@
         NationalHoliday,
         PlannedDaysOff,
         UnplannedDaysOff,
-    } from '../features/scheduling_days_off'
-    import { Summary } from '../features/school_year_summary'
-    import { YearlyScheduler } from '../features/setting_year'
+    } from '../lib/features/scheduling_days_off'
+    import { Summary } from '../lib/features/school_year_summary'
+    import { YearlyScheduler } from '../lib/features/setting_year'
 
     let sections = [
         { label: 'Summary', value: 0, component: Summary },

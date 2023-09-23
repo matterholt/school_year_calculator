@@ -1,7 +1,7 @@
 <script>
     import { TotalDaysOff } from './component'
 
-    import { schooldaysperweek } from '../../store/schoolyear'
+    import { schooldaysperweek } from '../../../store/schoolyear'
 
     import { formatDate } from '../../helpers/date_manipulations'
 

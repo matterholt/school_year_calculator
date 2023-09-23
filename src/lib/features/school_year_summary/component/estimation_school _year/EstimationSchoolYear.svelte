@@ -1,5 +1,5 @@
 <script>
-    import { schooldaysperweek } from '../../../../store/schoolyear'
+    import { schooldaysperweek } from '../../../../../store/schoolyear'
     // TODO
     // Think about what data should be set here,
     // 1. projected end date
