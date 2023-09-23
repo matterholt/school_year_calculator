@@ -1,6 +1,6 @@
 <script>
     export let items = []
-    export let activeTabValue = 0
+    export let activeTabValue = 5
 
     const handleClick = (tabValue) => () => (activeTabValue = tabValue)
 </script>
