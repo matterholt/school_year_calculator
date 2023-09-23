@@ -1,5 +1,5 @@
 <script>
-    import { Button } from '../../../global_components/'
+    import { Button, Input } from '../../../global_components/'
 
     import { nationalHoliday } from '../../../../store/nationalHoliday'
     import { numberOfDays } from '../../../../helpers/date_manipulations'
@@ -59,7 +59,7 @@
 
                 <label class="selectedLabel" for={selectDay.name + 'daysOff'}>
                     Days Off
-                    <input
+                    <Input
                         class="selectedInput"
                         id={selectDay.name + 'daysOff'}
                         bind:value={selectDay.dayCount}
@@ -88,6 +88,7 @@
         display: grid;
         border: solid 5px #202020;
         border-radius: 15px;
+        grid-template-columns: 50px 1fr 50px;
         grid-template-areas: 'button name label';
         align-items: center;
     }
@@ -102,7 +103,7 @@
         height: 50%;
         place-self: baseline;
     }
-    .selectedInput {
+    :global(.selectedInput) {
         grid-area: input;
     }
     .selectedLabel {
@@ -112,17 +113,6 @@
     }
     :global(.holiday_unselection) {
         width: 100%;
-    }
-    input {
-        display: grid;
-        place-items: center;
-        padding: 10px;
-        font-size: 15px;
-        width: 50%;
-        border: none;
-        border-radius: 5px;
-        place-self: center;
-        height: 50%;
     }
 
     .sub {

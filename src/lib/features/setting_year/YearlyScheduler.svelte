@@ -1,5 +1,6 @@
 <script>
-    import { TotalDaysOff } from './component'
+    import { Input } from '../../global_components'
+    import TotalDaysOff from './component/total_days_off/TotalDaysOff.svelte'
 
     import { schooldaysperweek } from '../../../store/schoolyear'
 
@@ -23,37 +24,35 @@
     <section class="schedule_column">
         <h3>Estimated school year</h3>
         <div class="schedule_row-date">
+            {startDate}
             <div>
-                <p>Start : <input type="date" bind:value={startDate} /></p>
-                <p>End : <input type="date" bind:value={startDate} /></p>
+                <p>
+                    Start :
+                    <Input type="date" bind:value={startDate} />
+                </p>
+                <p>
+                    End : <Input type="date" bind:value={enddingDate} />
+                </p>
             </div>
             <p>
-                day per week : <input
-                    type="number"
-                    bind:value={daysPerWeek}
-                    on:change={() => schooldaysperweek.set(daysPerWeek)}
-                    min="1"
-                    max="7"
-                />
+                day per week :
+                <Input type="number" bind:value={daysPerWeek} min="1" max="7" />
             </p>
         </div>
         <TotalDaysOff />
         <div>Time Off scheduled: 9999 Max amount of lessons: 123</div>
     </section>
-
-    <style>
-        .schedule_column {
-            display: grid;
-            grid-template-rows: repeat(4, 1fr);
-            height: min-content;
-        }
-
-        .schedule_row-date {
-            display: flex;
-            justify-content: space-evenly;
-        }
-    </style>
 </div>
 
 <style>
+    .schedule_column {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        height: min-content;
+    }
+
+    .schedule_row-date {
+        display: flex;
+        justify-content: space-evenly;
+    }
 </style>

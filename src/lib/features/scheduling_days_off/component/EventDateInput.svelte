@@ -5,7 +5,7 @@
         addSomeDays,
         formatDate,
     } from '../../../../helpers/date_manipulations/'
-    import { Button } from '../../../global_components/'
+    import { Button, Input } from '../../../global_components/'
 
     export let handleUpdateStore
     export let sectionType = ''
@@ -38,16 +38,16 @@
 </script>
 
 <div class="event_date_inputs">
-    <input
+    <Input
         class="dateTitle"
         type="text"
         bind:value={eventTitle}
         placeholder="Vacation"
     />
     <div class="dateSetters">
-        <input type="date" id="vakStart" bind:value={vakStart} />
+        <Input type="date" id="vakStart" bind:value={vakStart} />
         {#if isMultiple}
-            <input type="date" id="vakStart" bind:value={vakEnd} />
+            <Input type="date" id="vakStart" bind:value={vakEnd} />
         {/if}
         <Button
             class="actionButton"
@@ -76,10 +76,6 @@
             ' dateSetters actionButton';
     }
 
-    input[type='text'] {
-        flex: 1;
-        padding: 5px;
-    }
     .dateTitle {
         grid-area: dateTitle;
     }
