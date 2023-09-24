@@ -1,2 +1,5 @@
 export { default as Input } from "../global_components/input/Input.svelte"
 export { default as Button } from "../global_components/button/Button.svelte"
+export { default as Box } from "../global_components/box/Box.svelte"
+export { default as Tabs } from "../global_components/tabs/Tabs.svelte"
+export { default as Modal } from "../global_components/modal/Modal.svelte"

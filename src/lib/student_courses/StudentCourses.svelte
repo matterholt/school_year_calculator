@@ -7,7 +7,7 @@
 
     import StudentCourseCard from '../../lib/Student_course_card/StudentCourseCard.svelte'
 
-    import Modal from '../../lib/global_components/Modal.svelte'
+    import { Modal } from '../global_components'
     let showModal = 'closed'
 
     let students

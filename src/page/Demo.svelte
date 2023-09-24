@@ -16,7 +16,7 @@
 
 <script>
     import StudentCourses from '../lib/student_courses/StudentCourses.svelte'
-    import Tabs from '../lib/global_components/Tabs.svelte'
+    import { Tabs } from '../lib/global_components'
     import {
         NationalHoliday,
         PlannedDaysOff,
