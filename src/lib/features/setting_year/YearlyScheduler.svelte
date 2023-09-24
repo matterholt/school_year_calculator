@@ -1,5 +1,5 @@
 <script>
-    import { Input } from '../../global_components'
+    import { Input, Box } from '../../global_components'
     import TotalDaysOff from './component/total_days_off/TotalDaysOff.svelte'
 
     import { schooldaysperweek } from '../../../store/schoolyear'
@@ -22,25 +22,25 @@
 
 <div>
     <section class="schedule_column">
-        <h3>Estimated school year</h3>
+        <Box tag="h3">Estimated school year</Box>
         <div class="schedule_row-date">
-            {startDate}
             <div>
-                <p>
+                <Box tag="span">THIS SHOULD BE SPAN</Box>
+                <Box>
                     Start :
                     <Input type="date" bind:value={startDate} />
-                </p>
-                <p>
+                </Box>
+                <Box>
                     End : <Input type="date" bind:value={enddingDate} />
-                </p>
+                </Box>
             </div>
-            <p>
+            <Box>
                 day per week :
                 <Input type="number" bind:value={daysPerWeek} min="1" max="7" />
-            </p>
+            </Box>
         </div>
         <TotalDaysOff />
-        <div>Time Off scheduled: 9999 Max amount of lessons: 123</div>
+        <Box>Time Off scheduled: 9999 Max amount of lessons: 123</Box>
     </section>
 </div>
 

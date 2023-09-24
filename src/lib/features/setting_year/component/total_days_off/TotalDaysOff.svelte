@@ -2,6 +2,7 @@
     import { noLessonDays } from '../../../../../store/noLessonDays'
     import { nationalHoliday } from '../../../../../store/nationalHoliday'
     import { numberOfDays } from '../../../../../helpers/date_manipulations'
+    import { Box } from '../../../../global_components'
 
     $: daysOffList = [
         Object.values($noLessonDays).flat(),
@@ -10,7 +11,7 @@
     $: totalTallyOfDaysOff = numberOfDays(daysOffList)
 </script>
 
-<p>Days Off : {totalTallyOfDaysOff}</p>
+<Box tag="p">Days Off : {totalTallyOfDaysOff}</Box>
 
 <style>
 </style>
