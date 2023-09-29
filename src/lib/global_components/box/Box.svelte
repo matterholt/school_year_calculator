@@ -16,7 +16,6 @@
     }
     div {
         font-size: 1.6em;
-        background-color: rgba(255, 255, 255, 0.527);
     }
     h1 {
         font-size: 3em;

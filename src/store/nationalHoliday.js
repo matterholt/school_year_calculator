@@ -33,7 +33,8 @@ function customStore() {
         resetToInitial: () => {
             resetStore('national_holidays')
             schoolYearHolidays.set(Initial)
-        }
+        },
+
 
 
     }

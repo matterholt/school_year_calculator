@@ -23,7 +23,7 @@
         UnplannedDaysOff,
     } from '../lib/features/scheduling_days_off'
     import { Summary } from '../lib/features/school_year_summary'
-    import { YearlyScheduler } from '../lib/features/setting_year'
+    import SchoolYearSettings from './school_year_settings/SchoolYearSettings.svelte'
 
     let sections = [
         { label: 'Summary', value: 0, component: Summary },
@@ -31,7 +31,7 @@
         { label: 'Planned Days Off', value: 2, component: PlannedDaysOff },
         { label: 'Unplanned Days Off', value: 3, component: UnplannedDaysOff },
         { label: 'National Holiday', value: 4, component: NationalHoliday },
-        { label: 'Year Scheduler', value: 5, component: YearlyScheduler },
+        { label: 'Year Scheduler', value: 5, component: SchoolYearSettings },
     ]
 </script>
 
