@@ -1,11 +1,12 @@
 <script>
     export let tag = 'div',
-        className = null
+        className = null,
+        htmlFor = undefined
 
     export { className as class }
 </script>
 
-<svelte:element this={tag} class={['base', className].join(' ')}>
+<svelte:element this={tag} class={['base', className].join(' ')} for={htmlFor}>
     <slot />
 </svelte:element>
 
@@ -28,5 +29,10 @@
     }
     p {
         font-size: 1.6em;
+    }
+    label {
+        text-transform: uppercase;
+        font-size: 0.5em;
+        font-weight: 600;
     }
 </style>
