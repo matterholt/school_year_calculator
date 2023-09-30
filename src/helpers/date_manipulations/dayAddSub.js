@@ -8,8 +8,12 @@ import moment from 'moment';
  * 
  * @param {string} date 
  * @param {number} value 
+ * 
+ * for a given date with an estimated number fo days . 
+ * should figure out how many weekend day and add it to the date as well.
  */
 function addSomeDays(date, value) {
+    // TODO : calculate the weekends for days, 
     return moment(date).add(value, 'days').format(inputFormat);
 }
 
@@ -22,7 +26,7 @@ function addSomeDays(date, value) {
 function addemWeeksUp(datePicked, addValue) {
     return moment(datePicked)
         .add(addValue, 'weeks')
-        .format(americanFormat)
+        .format(inputFormat)
 
 }
 
