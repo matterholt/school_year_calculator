@@ -22,12 +22,13 @@ function addSomeDays(date, value) {
  * @param {string} datePicked 
  * @param {number} addValue 
  * @returns 
+ * string with a date
  */
 function addemWeeksUp(datePicked, addValue) {
+
     return moment(datePicked)
         .add(addValue, 'weeks')
         .format(inputFormat)
-
 }
 
 /**

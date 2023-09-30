@@ -8,8 +8,8 @@
     } from '../../../helpers/date_manipulations'
     export let totalDayOfSchool = 0
 
-    let startDate = formatDate('2023-09-05')
-    let endingDate = addemWeeksUp(startDate, 36) // !!  only if not set in memory...!!!!
+    let startDate = formatDate('2023-09-01')
+    let endingDate = addemWeeksUp(startDate, 4) // !!  only if not set in memory...!!!!
     $: {
         totalDayOfSchool = dayRangeCal(startDate, endingDate)
     }

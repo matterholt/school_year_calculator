@@ -21,8 +21,9 @@
         NationalHoliday,
         PlannedDaysOff,
         UnplannedDaysOff,
-    } from '../lib/features/scheduling_days_off'
-    import { Summary } from '../lib/features/school_year_summary'
+        Summary,
+    } from '../lib/features'
+
     import SchoolYearSettings from './school_year_settings/SchoolYearSettings.svelte'
 
     let sections = [
