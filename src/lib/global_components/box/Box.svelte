@@ -16,7 +16,7 @@
         margin: 2px;
     }
     div {
-        font-size: 1.6em;
+        font-size: 1rem;
     }
     h1 {
         font-size: 3em;
@@ -25,14 +25,14 @@
         font-size: 2.5em;
     }
     h3 {
-        font-size: 2em;
+        font-size: 1.7em;
     }
     p {
-        font-size: 1.6em;
+        font-size: 1.2em;
     }
     label {
         text-transform: uppercase;
-        font-size: 0.5em;
+        font-size: 1.2em;
         font-weight: 600;
     }
 </style>

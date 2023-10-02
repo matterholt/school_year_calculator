@@ -1,12 +1,16 @@
 <script>
-    export let buttonAction
+    import { Box } from '../'
+    export let buttonAction,
+        variant = 'base'
     export let className = null
     export { className as class }
 </script>
 
-<button class={['btn', className].join(' ')} on:click={buttonAction}
-    ><slot /></button
->
+<button class={['btn', className].join(' ')} on:click={buttonAction}>
+    <Box tag="p">
+        <slot />
+    </Box>
+</button>
 
 <style>
     .btn {
@@ -14,7 +18,6 @@
         border-radius: 8px;
         border: 1px solid transparent;
         padding: 0.6em 1.2em;
-        font-size: 1em;
         font-weight: 500;
         font-family: inherit;
         background-color: #1a1a1a;
