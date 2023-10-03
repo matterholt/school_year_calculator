@@ -1,15 +1,33 @@
 <script>
-    import { Box, Button, Input } from '../../../global_components/'
-
     import { nationalHoliday } from '../../../../store/nationalHoliday'
     import { numberOfDays } from '../../../../helpers/date_manipulations'
+    import { Box, Button, Input } from '../../../global_components/'
+    import Holiday from './components/Holiday.svelte'
 
-    let activeHolidaySelection = false
+    let holiday = {
+        id: 9,
+        name: 'Thanksgiving Day',
+        date: 'Fourth Thursday in November',
+        month: 'November',
+        dayCount: 2,
+        isObserved: true,
+    }
+
+    let activeHolidaySelection = true
+
+    let numberOfHolidays = 0
+    let numberDayInHoliday = 0
 </script>
 
 <section class="national_holiday">
     <Box class="nationalHoliday_header">
         <Box tag="h3">US Holidays</Box>
+        <Box tag="p">
+            Holidays: {numberOfHolidays}
+        </Box>
+        <Box tag="p">
+            Days Taken: {numberDayInHoliday}
+        </Box>
         <Button
             variant="ghost"
             buttonAction={() =>
@@ -18,14 +36,9 @@
             {activeHolidaySelection ? 'show' : 'noshow'}</Button
         >
     </Box>
-    <Box>
-        <ul>
-            <li>Holidays: XX</li>
-            <li>Days: XX</li>
-        </ul>
-    </Box>
+
     {#if activeHolidaySelection}
-        <p>component that will list out the Holidays for the school year</p>
+        <Holiday {holiday} />
     {/if}
 </section>
 
