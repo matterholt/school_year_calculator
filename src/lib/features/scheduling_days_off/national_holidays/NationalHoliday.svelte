@@ -1,18 +1,21 @@
 <script>
     import { nationalHoliday } from '../../../../store/nationalHoliday'
+    import { holidays } from '../../../../helpers/us_national_holiday.json'
+
     import { numberOfDays } from '../../../../helpers/date_manipulations'
     import { Box, Button, Input } from '../../../global_components/'
     import Holiday from './components/Holiday.svelte'
 
-    let holiday = {
-        id: 9,
-        name: 'Thanksgiving Day',
-        date: 'Fourth Thursday in November',
-        month: 'November',
-        dayCount: 2,
-        isObserved: true,
-    }
-
+    // let holiday = [
+    //     {
+    //         id: 9,
+    //         name: 'Thanksgiving Day',
+    //         date: 'Fourth Thursday in November',
+    //         month: 'November',
+    //         dayCount: 2,
+    //         isObserved: true,
+    //     },
+    // ]
     let activeHolidaySelection = true
 
     let numberOfHolidays = 0
@@ -38,7 +41,11 @@
     </Box>
 
     {#if activeHolidaySelection}
-        <Holiday {holiday} />
+        <div class="holiday_usNational_list">
+            {#each holidays as holiday}
+                <Holiday {holiday} />
+            {/each}
+        </div>
     {/if}
 </section>
 
@@ -52,5 +59,11 @@
         display: flex;
         justify-content: space-between;
         border-top: 1px solid var(--main-accent-color);
+    }
+    .holiday_usNational_list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
     }
 </style>
