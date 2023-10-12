@@ -17,12 +17,7 @@
 <script>
     import StudentCourses from '../lib/student_courses/StudentCourses.svelte'
     import { Tabs } from '../lib/global_components'
-    import {
-        NationalHoliday,
-        PlannedDaysOff,
-        UnplannedDaysOff,
-        Summary,
-    } from '../lib/features'
+    import { PlannedDaysOff, UnplannedDaysOff, Summary } from '../lib/features'
 
     import SchoolYearSettings from './school_year_settings/SchoolYearSettings.svelte'
 
@@ -31,7 +26,6 @@
         { label: 'Student', value: 1, component: StudentCourses },
         { label: 'Planned Days Off', value: 2, component: PlannedDaysOff },
         { label: 'Unplanned Days Off', value: 3, component: UnplannedDaysOff },
-        { label: 'National Holiday', value: 4, component: NationalHoliday },
         { label: 'Year Scheduler', value: 5, component: SchoolYearSettings },
     ]
 </script>

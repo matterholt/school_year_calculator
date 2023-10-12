@@ -6,16 +6,6 @@
     import { Box, Button, Input } from '../../../global_components/'
     import Holiday from './components/Holiday.svelte'
 
-    // let holiday = [
-    //     {
-    //         id: 9,
-    //         name: 'Thanksgiving Day',
-    //         date: 'Fourth Thursday in November',
-    //         month: 'November',
-    //         dayCount: 2,
-    //         isObserved: true,
-    //     },
-    // ]
     let activeHolidaySelection = true
 
     let numberOfHolidays = 0
@@ -63,6 +53,7 @@
     .holiday_usNational_list {
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 100%;
         gap: 20px;
     }
