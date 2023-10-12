@@ -1,7 +1,12 @@
 <script>
     export let holiday
     let { isObserved, id, name, date, month, dayCount } = holiday
-    import { Box, Button, Input } from '../../../../global_components/'
+    import {
+        Box,
+        Button,
+        Input,
+        ToggleSwitch,
+    } from '../../../../global_components/'
 
     function updateObserve() {
         isObserved = !isObserved
@@ -19,9 +24,7 @@
         </div>
     {/if}
     <div class="odserverButton">
-        <Button buttonAction={() => updateObserve()}
-            >{isObserved ? 'disregard' : 'observed'}</Button
-        >
+        <ToggleSwitch />
     </div>
 </div>
 
