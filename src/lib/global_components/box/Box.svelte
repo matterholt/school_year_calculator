@@ -30,6 +30,10 @@
     p {
         font-size: 1.2em;
     }
+    .smaller {
+        font-size: 1em;
+        font-weight: 200;
+    }
     label {
         text-transform: uppercase;
         font-size: 1.2em;

@@ -1,7 +1,7 @@
 <script>
     import { Box } from '../'
     export let buttonAction,
-        variant = 'base'
+        variant = 'base' //ghost
     export let className = null
     export { className as class }
 </script>

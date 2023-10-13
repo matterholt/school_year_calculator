@@ -6,6 +6,12 @@
     import { Box, Button, Input } from '../../../global_components/'
     import Holiday from './components/Holiday.svelte'
 
+    // holidays during school year at the top,
+    $: nationalHolidayList = holidays
+    $: {
+        console.log(nationalHolidayList)
+    }
+
     let activeHolidaySelection = true
 
     let numberOfHolidays = 0
@@ -25,8 +31,7 @@
             variant="ghost"
             buttonAction={() =>
                 (activeHolidaySelection = !activeHolidaySelection)}
-        >
-            {activeHolidaySelection ? 'show' : 'noshow'}</Button
+            >{activeHolidaySelection ? 'show' : 'noshow'}</Button
         >
     </Box>
 

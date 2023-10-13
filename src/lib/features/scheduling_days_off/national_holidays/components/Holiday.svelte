@@ -7,24 +7,26 @@
         Input,
         ToggleSwitch,
     } from '../../../../global_components/'
-
-    function updateObserve() {
-        isObserved = !isObserved
-    }
 </script>
 
 <div class={isObserved ? 'active holiday_section' : 'holiday_section'}>
-    <h4>{name}</h4>
-    <p>{date}</p>
+    <div class="holiday_title-layout">
+        <Box tag="h4">{name}</Box>
+    </div>
+
+    <div class="holiday_date-layout">
+        <Box tag="p" class="smaller">{date}</Box>
+    </div>
 
     {#if isObserved}
         <div class="daycount">
             <label for="dayCount">Day Count</label>
-            <input id="dayCount" type="number" min="0" bind:value={dayCount} />
+            <Input id="dayCount" type="number" min="0" bind:value={dayCount} />
         </div>
     {/if}
-    <div class="odserverButton">
-        <ToggleSwitch />
+
+    <div class="odserverButton-layout">
+        <ToggleSwitch bind:isPressed={isObserved} />
     </div>
 </div>
 
@@ -34,26 +36,32 @@
         height: 100px;
         width: 720px;
         display: grid;
-        padding: 0px 10px;
-        border-radius: 5px;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas: 'title date daycount  action';
+        padding: 0px 25px;
+        border-radius: 100px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 25px);
+        align-content: center;
         align-items: center;
+
+        grid-template-areas:
+            'title  daycount  action'
+            'date daycount  action';
     }
     .active {
-        background-color: #3a3838;
+        background-color: #28282b;
+        transition: background-color 0.4s;
     }
-    h4 {
+    .holiday_title-layout {
         grid-area: title;
     }
     .daycount {
         grid-area: daycount;
     }
-    p {
+    .holiday_date-layout {
         grid-area: date;
     }
 
-    .odserverButton {
+    .odserverButton-layout {
         grid-area: action;
         justify-self: end;
     }

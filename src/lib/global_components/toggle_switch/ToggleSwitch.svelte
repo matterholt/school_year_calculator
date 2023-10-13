@@ -1,6 +1,6 @@
 <script>
+    export let isPressed = false
     let label = 'test',
-        isPressed = false,
         name = ''
 
     const toggleIsPressed = () => {
