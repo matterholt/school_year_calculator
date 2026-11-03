@@ -15,6 +15,10 @@
     "check": "prettier --check ."
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^9.5.0",
+    "@mui/styled-engine-sc": "^9.5.0",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "0.10.14",
     "@tanstack/react-router": "1.170.46",
@@ -23,6 +27,7 @@
     "nitro": "3.0.260610-beta",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "styled-components": "^6.6.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
