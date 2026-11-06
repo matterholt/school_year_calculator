@@ -1,5 +1,10 @@
+import * as React from 'react'
+
 import { createFileRoute } from '@tanstack/react-router'
 import { StudentList } from '#/components/admin/StudentList'
+import { PopOver } from '#/components/general/PopOver'
+import { AddStudentForm } from '#/components/admin/AddStudentForm'
+
 
 import { getStudents } from '#/serverActions/enrolledStudents'
 
@@ -10,12 +15,28 @@ export const Route = createFileRoute('/admin')({
   component: RouteComponent,
 })
 
+
+
+
 function RouteComponent() {
   const students = Route.useLoaderData()
 
-  return <div>Hello "/admin"!
-    students
-    <StudentList students={students}/>
+  const [activePopOver, setActivePopOver] = React.useState(true)
 
-  </div>
+
+  
+  return (
+    <React.Fragment>
+      <div>
+        <PopOver name={"Add Student"} activePopOver={ activePopOver}>
+          <AddStudentForm />
+        </PopOver>
+
+      </div>
+      <div>
+        Hello "/admin"! students
+          <StudentList students={students} />
+      </div>
+    </React.Fragment>
+  )
 }

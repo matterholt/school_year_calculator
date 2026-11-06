@@ -1,15 +1,14 @@
- interface EnrolledStudents {
+ interface EnrolledStudent {
   id :string
   name: string
   grade: string
-  courses:string[]
 }
 
-type EnrolledStudentsData = EnrolledStudents[]
+type EnrolledStudentsData = EnrolledStudent[]
 
 
 export type{
-  EnrolledStudents,
+  EnrolledStudent,
   EnrolledStudentsData
 
 }
